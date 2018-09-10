@@ -1,0 +1,25 @@
+---
+
+- name: Installing apt-key
+  apt_key: id="F76221572C52609D" url=https://apt.dockerproject.org/gpg state=present
+
+- name: Add deb repository
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main' state=present
+
+- name: Install
+  apt: pkg="{{ item }}" state=latest update_cache=yes
+  with_items:
+    - linux-image-extra-virtual
+    - docker-engine
+
+- name: Create Docker group
+  group: name=docker state=present
+
+- name: Add current user to Docker group
+  user: name="{{ ansible_env.USER }}" groups=docker append=yes
+
+- name: "Ensure Docker is {{ docker.start | ternary('started','stopped') }}"
+  service: name=docker state={{ docker.start | ternary('restarted','stopped') }} enabled={{ docker.service_enabled }}
+
+- name: Install docker-compose
+  get_url: url="https://github.com/docker/compose/releases/download/{{ docker.docker_compose_version }}/docker-compose-Linux-x86_64" dest=/usr/local/bin/docker-compose force=no mode=0755

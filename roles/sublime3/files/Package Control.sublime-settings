@@ -1,0 +1,27 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"BracketHighlighter",
+		"DocBlockr",
+		"Emmet",
+        "EditorConfig",
+		"GitGutter",
+		"GotoDocumentation",
+		"INI",
+		"Laravel Blade Highlighter",
+		"Markdown Preview",
+		"One Dark Color Scheme",
+		"One Dark Material - Theme",
+		"Package Control",
+		"QML",
+		"SCSS",
+		"StringUtilities",
+        "Terminal",
+		"TrailingSpaces"
+	]
+}

@@ -1,0 +1,67 @@
+---
+
+- name: Install Shutter screenshot tool
+  apt:
+    name: shutter
+    state: present
+
+- name: Check if libgoocanvas is installed
+  command: dpkg-query -W libgoocanvas-common
+  register: libgoocanvas_check_deb
+  failed_when: libgoocanvas_check_deb.rc > 1
+  changed_when: libgoocanvas_check_deb.rc == 1
+
+- name: Download libgoocanvas
+  get_url: url="https://launchpad.net/ubuntu/+archive/primary/+files/libgoocanvas-common_1.0.0-1_all.deb" dest="/tmp/libgoocanvas-common_1.0.0-1_all.deb"
+  when: libgoocanvas_check_deb.rc == 1
+
+- name: Install libgoocanvas-common
+  apt: deb="/tmp/libgoocanvas-common_1.0.0-1_all.deb"
+  when: libgoocanvas_check_deb.rc == 1
+
+- name: Clean libgoocanvas-common deb file
+  file: path=/tmp/libgoocanvas-common_1.0.0-1_all.deb state=absent
+
+- name: Check if libgoocanvas3 is installed
+  command: dpkg-query -W libgoocanvas3
+  register: libgoocanvas3_check_deb
+  failed_when: libgoocanvas3_check_deb.rc > 1
+  changed_when: libgoocanvas3_check_deb.rc == 1
+
+- name: Download libgoocanvas3
+  get_url: url="https://launchpad.net/ubuntu/+archive/primary/+files/libgoocanvas3_1.0.0-1_amd64.deb" dest="/tmp/libgoocanvas3_1.0.0-1_amd64.deb"
+  when: libgoocanvas3_check_deb.rc == 1
+
+- name: Install libgoocanvas3
+  apt: deb="/tmp/libgoocanvas-common_1.0.0-1_all.deb"
+  when: libgoocanvas3_check_deb.rc == 1
+
+- name: Clean libgoocanvas3 deb file
+  file: path=/tmp/libgoocanvas-common_1.0.0-1_all.deb state=absent
+
+- name: Check if libgoo-canvas-perl is installed
+  command: dpkg-query -W libgoo-canvas-perl
+  register: libgoo_canvas_perl_check_deb
+  failed_when: libgoo_canvas_perl_check_deb.rc > 1
+  changed_when: libgoo_canvas_perl_check_deb.rc == 1
+
+- name: Install libgoo-canvas-perl dependencies
+  apt: 
+    name: { item }
+    state: present
+  with_items:
+    - libextutils-depends-perl
+    - libextutils-pkgconfig-perl
+    - pkg-config
+  when: libgoo_canvas_perl_check_deb.rc == 1
+
+- name: Download libgoo-canvas-perl
+  get_url: url="https://launchpad.net/ubuntu/+archive/primary/+files/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb" dest="/tmp/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb"
+  when: libgoo_canvas_perl_check_deb.rc == 1
+
+- name: Install libgoo-canvas-perl
+  apt: deb="/tmp/libgoocanvas-common_1.0.0-1_all.deb"
+  when: libgoo_canvas_perl_check_deb.rc == 1
+
+- name: Clean libgoo-canvas-perl deb file
+  file: path=/tmp/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb state=absent

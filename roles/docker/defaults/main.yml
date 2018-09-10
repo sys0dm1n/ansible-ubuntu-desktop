@@ -1,0 +1,6 @@
+---
+
+docker:
+  start: false
+  service_enabled: no
+  docker_compose_version: 1.22.0

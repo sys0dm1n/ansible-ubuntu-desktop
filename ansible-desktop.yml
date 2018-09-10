@@ -1,0 +1,40 @@
+---
+
+- name: Ubuntu desktop environment playbook
+  hosts: localhost
+  roles:
+    # Common roles
+    # - { role: locales, become: true }
+    # - { role: common, become: true }
+    # - { role: java-openjdk, become: true }
+    # Server roles
+    # - { role: docker, become: true }
+    # - { role: kubectl, become: true }
+    # - { role: minikube, become: true }
+    # - { role: python, become: true }
+    # - { role: ssh, become: true }
+    # - { role: ufw, become: true }
+    # Desktop roles
+    # - { role: desktop, become: true }
+    # - { role: atom, become: true }
+    # - { role: chromium, become: true }
+    # - { role: dbeaver, become: true }
+    # - { role: filezilla, become: true }
+    # - { role: firefox, become: true }
+    # - { role: gimp, become: true }
+    # - { role: indicator-sysmonitor, become: true }
+    # - { role: libreoffice, become: true }
+    # - { role: mysql-workbench, become: true }
+    # - { role: nautilus-plugins, become: true }
+    # - { role: notify-osd, become: true }
+    # - { role: remarkable, become: true }
+    # - { role: remmina, become: true }
+    # - { role: shutter, become: true }
+    # - { role: skype, become: true }
+    # - { role: sublime3, become: true }
+    # - { role: sunflower, become: true }
+    # - { role: teamviewer, become: true }
+    # - { role: thunderbird, become: true }
+    # - { role: vagrant, become: true }
+    # - { role: virtualbox, become: true }
+    # - { role: vokoscreen, become: true }

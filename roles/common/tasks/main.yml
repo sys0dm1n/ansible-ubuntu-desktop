@@ -1,0 +1,72 @@
+---
+
+- name: Ensure the system can use the HTTPS transport for APT
+  stat: path=/usr/lib/apt/methods/https
+  register: apt_https_transport
+
+- name: Install HTTPS transport for APT
+  apt: pkg=apt-transport-https state=installed
+  when: not apt_https_transport.stat.exists
+
+- name: Enable all repositories in sources.list
+  replace: dest=/etc/apt/sources.list regexp='^#\s?deb(.+)http://(.+)/ubuntu(.+)$' replace='deb\1http://\2/ubuntu\3' backup=yes
+
+- name: Ensure that Aptitude repositories are up to date
+  apt: update_cache=yes cache_valid_time={{ aptcachetime }}
+
+- name: Install common packages
+  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  with_items:
+    - afuse
+    - aptitude
+    - axel
+    - bash-completion
+    - build-essential
+    - bzip2
+    - colortest
+    - curl
+    - diffutils
+    - dig
+    - dos2unix
+    - fdupes
+    - ftp-ssl
+    - gawk
+    - gcc
+    - git
+    - git-core
+    - grep
+    - gzip
+    - htop
+    - httping
+    - iftop
+    - imagemagick
+    - iotop
+    - less
+    - lftp
+    - make
+    - mtr
+    - nfs-common
+    - nmap
+    - openssl
+    - p7zip
+    - pv
+    - pwgen
+    - ranger
+    - rar
+    - rsync
+    - smbclient
+    - software-properties-common
+    - sshfs
+    - sshpass
+    - tar
+    - tmux
+    - trash-cli
+    - tig
+    - unzip
+    - vim
+    - wget
+    - whois
+    - zip
+
+- name: Upgrade installed packages
+  apt: upgrade=yes

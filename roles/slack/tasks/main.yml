@@ -1,0 +1,25 @@
+---
+
+- name: Install snapd package
+  apt: pkg=snapd state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+
+- name: Install slack
+  command: sudo snap install slack --classic
+
+
+#- name: Check if Slack is installed
+#  command: dpkg-query -W slack
+#  register: slack_check_deb
+#  failed_when: slack_check_deb.rc > 1
+#  changed_when: slack_check_deb.rc == 1
+
+#- name: Download slack
+#  get_url: url="https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.1-amd64.deb" dest="/tmp/slack-desktop-latest.deb"
+#  when: slack_check_deb.rc == 1
+
+#- name: Install slack
+#  apt: deb="/tmp/slack-desktop-latest.deb"
+#  when: slack_check_deb.rc == 1
+
+#- name: Clean slack deb file
+#  file: path=/tmp/slack-desktop-latest.deb state=absent
