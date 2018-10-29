@@ -4,8 +4,12 @@
     repo: ppa:teejee2008/ppa
     state: present
 
-- name: Install TimeShift OS Snapshot tool
-  apt: 
-    name: timeshift 
-    state: present 
+- name: Install TimeShift OS Snapshot tool and BTRFS
+  apt:
+    pkg: "{{ item }}"
+    state: present
     update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+  with_items:
+    - timeshift
+    - btrfs-tools
