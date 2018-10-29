@@ -48,6 +48,7 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | sunflower                | Install [SunFlower](http://sunflower-fm.org/download)fom online dev|
 | teamviewer               | Install [TeamViewer](https://www.teamviewer.com/) from online deb file|
 | thunderbird              | Install [Thunderbird](https://www.mozilla.org/thunderbird/) (no particular settings, basic installation) |
+| timeshift                | Install [TimeShift](https://github.com/teejee2008/timeshift) |
 | vagrant                  | Install [Vagrant](https://www.vagrantup.com/) from online deb file|
 | virtualbox               | Install [VirtualBox](https://www.virtualbox.org/) from VirtualBox APT repositories | 
 | vokoscreen               | Install [Vokoscreen](http://www.kohaupt-online.de/hp/) screencast tool|

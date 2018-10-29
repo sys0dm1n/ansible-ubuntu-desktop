@@ -1,0 +1,11 @@
+---
+- name: Add TimeShift repository 
+  apt_repository: 
+    repo: ppa:teejee2008/ppa
+    state: present
+
+- name: Install TimeShift OS Snapshot tool
+  apt: 
+    name: timeshift 
+    state: present 
+    update_cache: yes
