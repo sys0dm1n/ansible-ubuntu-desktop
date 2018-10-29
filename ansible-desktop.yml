@@ -8,6 +8,7 @@
     # - { role: common, become: true }
     # - { role: java-openjdk, become: true }
     # Server roles
+    # - { role: awscli, become false }
     # - { role: docker, become: true }
     # - { role: kubectl, become: true }
     # - { role: minikube, become: true }

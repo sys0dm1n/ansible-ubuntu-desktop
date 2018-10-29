@@ -1,0 +1,6 @@
+---
+
+- name: Install awscli package
+  pip: 
+    name: awscli 
+    state: present

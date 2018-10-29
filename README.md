@@ -53,6 +53,7 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | virtualbox               | Install [VirtualBox](https://www.virtualbox.org/) from VirtualBox APT repositories | 
 | vokoscreen               | Install [Vokoscreen](http://www.kohaupt-online.de/hp/) screencast tool|
 |                               | **Services & server tools** |
+| awscli                  | Install [awscli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) |
 | docker                   | Install [Docker](https://www.docker.com/) and Docker compose from Docker deb repository|
 | kubectl| Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)  |
 | minikube                   | Install [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)  |
