@@ -1,21 +1,34 @@
 ---
 
 - name: Ensure the system can use the HTTPS transport for APT
-  stat: path=/usr/lib/apt/methods/https
+  stat: 
+    path: /usr/lib/apt/methods/https
   register: apt_https_transport
 
 - name: Install HTTPS transport for APT
-  apt: pkg=apt-transport-https state=installed
+  apt: 
+    pkg: apt-transport-https
+    state: installed
   when: not apt_https_transport.stat.exists
 
 - name: Enable all repositories in sources.list
-  replace: dest=/etc/apt/sources.list regexp='^#\s?deb(.+)http://(.+)/ubuntu(.+)$' replace='deb\1http://\2/ubuntu\3' backup=yes
+  replace: 
+    dest: /etc/apt/sources.list 
+    regexp: '^#\s?deb(.+)http://(.+)/ubuntu(.+)$' 
+    replace: 'deb\1http://\2/ubuntu\3' 
+    backup: yes
 
 - name: Ensure that Aptitude repositories are up to date
-  apt: update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: 
+    update_cache: yes 
+    cache_valid_time: "{{ aptcachetime }}"
 
 - name: Install common packages
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: 
+    pkg: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
   with_items:
     - afuse
     - aptitude
@@ -69,4 +82,5 @@
     - zip
 
 - name: Upgrade installed packages
-  apt: upgrade=yes
+  apt: 
+    upgrade: yes
