@@ -10,6 +10,7 @@
     # Server roles
     # - { role: awscli, become false }
     # - { role: docker, become: true }
+    # - { role: ecs-cli, become: true }
     # - { role: kubectl, become: true }
     # - { role: minikube, become: true }
     # - { role: python, become: true }

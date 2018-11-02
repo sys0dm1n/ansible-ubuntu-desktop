@@ -1,0 +1,9 @@
+---
+- name: Installing Amazon ECS command line
+  get_url:
+    url: https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
+    dest: /usr/local/bin/ecs-cli
+    mode: 0755
+
+- name: Installed ECS version
+  commnad: /usr/local/bin/ecs-cli --version
