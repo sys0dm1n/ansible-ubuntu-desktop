@@ -49,6 +49,7 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | teamviewer               | Install [TeamViewer](https://www.teamviewer.com/) from online deb file|
 | thunderbird              | Install [Thunderbird](https://www.mozilla.org/thunderbird/) (no particular settings, basic installation) |
 | timeshift                | Install [TimeShift](https://github.com/teejee2008/timeshift) |
+| tmux                     | Install [tmux](https://github.com/tmux/tmux/wiki) tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. And do a lot more. |
 | vagrant                  | Install [Vagrant](https://www.vagrantup.com/) from online deb file|
 | virtualbox               | Install [VirtualBox](https://www.virtualbox.org/) from VirtualBox APT repositories | 
 | vokoscreen               | Install [Vokoscreen](http://www.kohaupt-online.de/hp/) screencast tool|

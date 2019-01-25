@@ -38,6 +38,7 @@
     # - { role: teamviewer, become: true }
     # - { role: thunderbird, become: true }
     # - { role: timeshift, become: true }
+    # - { role: tmux, become: true }
     # - { role: vagrant, become: true }
     # - { role: virtualbox, become: true }
     # - { role: vokoscreen, become: true }
