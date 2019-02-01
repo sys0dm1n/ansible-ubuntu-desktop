@@ -1,7 +1,16 @@
 ---
 
+- name: Adding UNetbootin PPA
+  apt_repository:
+    repo: ppa:gezakovacs/ppa
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_release == 'bionic'
+
 - name: Install common desktop packages
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: 
+    pkg: "{{ item }}" 
+    state: latest
+    update_cache: yes 
+    cache_valid_time: "{{ aptcachetime }}"
   with_items:
     - bleachbit
     - easytag # audio files metadata management
