@@ -62,3 +62,7 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | python                   | Install [Python](https://www.python.org/)  |
 | ssh                      | Install [OpenSSH Server](http://www.openssh.com/)      | 
 |ufw                   | Install [ufw](https://help.ubuntu.com/community/UFW) |
+
+## Room for improvement
+
+If you happen to find something not to your liking, you are welcome to send a PR.
