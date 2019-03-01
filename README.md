@@ -44,6 +44,7 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | remmina                  | Install [Remmina](http://www.remmina.org/) |
 | shutter                  | Install [Shutter](http://shutter-project.org/) screenshot tool |
 | skype                    | Install [Skype](https://www.skype.com/)    |
+| slack                    | Install [Slack](https://slack.com/) set of proprietary team collaboration tools and services.   |
 | sublime3                 | Install [Sublime Text 3](https://www.sublimetext.com/3) from [WebUpd8 PPA](https://launchpad.net/~webupd8team/+archive/ubuntu/sublime-text-3) and the [Package Control](https://packagecontrol.io/) plugin   |
 | sunflower                | Install [SunFlower](http://sunflower-fm.org/download)fom online dev|
 | teamviewer               | Install [TeamViewer](https://www.teamviewer.com/) from online deb file|
