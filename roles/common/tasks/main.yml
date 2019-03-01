@@ -39,7 +39,6 @@
     - colortest
     - curl
     - diffutils
-    - dig
     - dos2unix
     - fdupes
     - ftp-ssl
