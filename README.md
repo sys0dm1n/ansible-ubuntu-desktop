@@ -64,6 +64,11 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | ssh                      | Install [OpenSSH Server](http://www.openssh.com/)      | 
 |ufw                   | Install [ufw](https://help.ubuntu.com/community/UFW) |
 
-## Room for improvement
+## Contributing
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
 
-If you happen to find something not to your liking, you are welcome to send a PR.
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
