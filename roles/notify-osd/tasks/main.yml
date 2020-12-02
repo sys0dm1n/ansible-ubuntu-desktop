@@ -1,10 +1,14 @@
 ---
 
-- name: Configure the NotifyOSD PPA
-  apt_repository: repo="ppa:leolik/leolik" state=present
+#- name: Configure the NotifyOSD PPA
+#  apt_repository: 
+#    repo: 'ppa:leolik/leolik'
+#    state: present
 
 - name: Install NotifyOSD
-  apt: pkg=notify-osd state=latest
+  apt: 
+    pkg: ['notify-osd'] 
+    state: latest
 
 - name: Kill NotifyOSD process
   shell: pkill notify-osd

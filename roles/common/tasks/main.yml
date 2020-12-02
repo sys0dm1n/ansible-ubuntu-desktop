@@ -5,6 +5,13 @@
     path: /usr/lib/apt/methods/https
   register: apt_https_transport
 
+- name: Install snapd package
+  apt: 
+    pkg: snapd 
+    state: latest 
+    update_cache: yes 
+    cache_valid_time: "{{ aptcachetime }}"
+
 - name: Install HTTPS transport for APT
   apt: 
     pkg: apt-transport-https
@@ -25,61 +32,22 @@
 
 - name: Install common packages
   apt: 
-    pkg: "{{ item }}"
+    pkg: ['afuse', 'aptitude', 'axel', 'bash-completion', 'build-essential', 'bzip2', 'colortest', 'curl', 
+'diffutils', 'dos2unix', 'fdupes', 'ftp-ssl', 'gawk', 'gcc', 'git', 'git-core', 'grep', 'gzip', 'htop', 'httping', 'iftop', 'imagemagick', 'iotop', 
+'less', 'lftp', 'make', 'mtr', 'nfs-common', 'nmap', 'openssl', 'p7zip', 'pv', 'pwgen', 'ranger', 'rar', 'rsync', 'smbclient', 'software-properties-common', 'sshfs', 'sshpass', 'tar', 'tmux', 'trash-cli', 'tig', 'unzip', 'vim', 'wget', 'whois', 'zip']
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"
-  with_items:
-    - afuse
-    - aptitude
-    - axel
-    - bash-completion
-    - build-essential
-    - bzip2
-    - colortest
-    - curl
-    - diffutils
-    - dos2unix
-    - fdupes
-    - ftp-ssl
-    - gawk
-    - gcc
-    - git
-    - git-core
-    - grep
-    - gzip
-    - htop
-    - httping
-    - iftop
-    - imagemagick
-    - iotop
-    - less
-    - lftp
-    - make
-    - mtr
-    - nfs-common
-    - nmap
-    - openssl
-    - p7zip
-    - pv
-    - pwgen
-    - ranger
-    - rar
-    - rsync
-    - smbclient
-    - software-properties-common
-    - sshfs
-    - sshpass
-    - tar
-    - tmux
-    - trash-cli
-    - tig
-    - unzip
-    - vim
-    - wget
-    - whois
-    - zip
 
 - name: Upgrade installed packages
   apt: 
     upgrade: yes
+
+- name: Copy a new "openssl.cnf" file into place, backing up the original if it differs. prevent "tls12_check_peer_sigalg:wrong signature type"
+  copy:
+    src: openssl.cnf
+    dest: /usr/lib/ssl/openssl.cnf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes

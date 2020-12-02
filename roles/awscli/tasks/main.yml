@@ -1,6 +1,12 @@
 ---
-
+- name: Check if awscli is installed
+  command: dpkg-query -W awscli
+  register: awscli_check_deb
+  failed_when: awscli_check_deb.rc > 1
+  changed_when: awscli_check_deb.rc == 1
+  
 - name: Install awscli package
   pip: 
     name: awscli 
     state: present
+  when: awscli_check_deb.rc == 1 

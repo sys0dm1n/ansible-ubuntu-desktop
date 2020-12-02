@@ -6,4 +6,4 @@
     mode: 0755
 
 - name: Installed ECS version
-  commnad: /usr/local/bin/ecs-cli --version
+  command: /usr/local/bin/ecs-cli --version

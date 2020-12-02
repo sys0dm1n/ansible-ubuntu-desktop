@@ -37,19 +37,19 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | firefox                  | Install [Firefox](https://www.mozilla.org/firefox/) (no particular settings, basic installation) | 
 | gimp                     | Install [Gimp](https://www.gimp.org/) and some minor settings |
 | indicator-sysmonitor     | Install [indicator-sysmonitor](https://github.com/fossfreedom/indicator-sysmonitor) from [FOSSFreedom PPA](https://launchpad.net/~fossfreedom/+archive/ubuntu/indicator-sysmonitor)                                                                                                                                                   |
+| lens     | Install [Lens](https://k8slens.dev/) The Kubernetes IDE |
 | libreoffice     | Install [LibreOffice](https://www.libreoffice.org/) using [LibreOffice 5.1 PPA](https://launchpad.net/~libreoffice/+archive/ubuntu/libreoffice-5-1) |
 | mysql-workbench          | Install [MySQL WorkBench](https://www.mysql.fr/products/workbench/) from online deb file| 
-| nautilus-plugins         | Install Nautilus plugins|
-| remarkable               | Install [Remarkable](https://remarkableapp.github.io/linux.html) from online deb file|
-| remmina                  | Install [Remmina](http://www.remmina.org/) |
-| shutter                  | Install [Shutter](http://shutter-project.org/) screenshot tool |
+| nautilus-plugins         | Install Nautilus (the default file manager for Gnome) plugins|
+| remarkable               | Install [Remarkable](https://remarkableapp.github.io/linux.html) A fully featured markdown editor|
+| remmina                  | Install [Remmina](http://www.remmina.org/) Use other desktops remotely, from a tiny screen or large monitors.|
 | skype                    | Install [Skype](https://www.skype.com/)    |
 | slack                    | Install [Slack](https://slack.com/) set of proprietary team collaboration tools and services.   |
 | sublime3                 | Install [Sublime Text 3](https://www.sublimetext.com/3) from [WebUpd8 PPA](https://launchpad.net/~webupd8team/+archive/ubuntu/sublime-text-3) and the [Package Control](https://packagecontrol.io/) plugin   |
-| sunflower                | Install [SunFlower](http://sunflower-fm.org/download)fom online dev|
+| sunflower                | Install [SunFlower](http://sunflower-fm.org/download) fom online dev. Small and highly customizable twin-panel file manager for Linux|
 | teamviewer               | Install [TeamViewer](https://www.teamviewer.com/) from online deb file|
 | thunderbird              | Install [Thunderbird](https://www.mozilla.org/thunderbird/) (no particular settings, basic installation) |
-| timeshift                | Install [TimeShift](https://github.com/teejee2008/timeshift) |
+| timeshift                | Install [TimeShift](https://github.com/teejee2008/timeshift). It provides functionality similar to the System Restore feature in Windows and the Time Machine tool in Mac OS |
 | tmux                     | Install [tmux](https://github.com/tmux/tmux/wiki) tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. And do a lot more. |
 | vagrant                  | Install [Vagrant](https://www.vagrantup.com/) from online deb file|
 | virtualbox               | Install [VirtualBox](https://www.virtualbox.org/) from VirtualBox APT repositories | 

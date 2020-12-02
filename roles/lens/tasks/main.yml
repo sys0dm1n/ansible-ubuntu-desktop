@@ -1,0 +1,14 @@
+---
+
+- name: Check if Lens is installed
+  command: dpkg-query -W lens
+  register: lens_check_deb
+  failed_when: lens_check_deb.rc > 1
+  changed_when: lens_check_deb.rc == 1
+
+- name: Install lens
+  snap:
+    name:
+      - kontena-lens
+    classic: yes
+  when: lens_check_deb.rc == 1 
