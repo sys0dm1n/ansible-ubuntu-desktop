@@ -7,12 +7,18 @@
   changed_when: sunflower_check_deb.rc == 1
 
 - name: Download SunFlower
-  get_url: url="http://sunflower-fm.org/pub/sunflower-0.3.61-1.all.deb" dest="/tmp/download-sunflower-latest.deb"
+  get_url: 
+    url: "http://sunflower-fm.org/pub/sunflower-0.4.62-3.all.deb" 
+    dest: "/tmp/download-sunflower-latest.deb"
+    validate_certs: no
   when: sunflower_check_deb.rc == 1
 
 - name: Install SunFlower
-  apt: deb="/tmp/download-sunflower-latest.deb"
+  apt: 
+    deb: "/tmp/download-sunflower-latest.deb"
   when: sunflower_check_deb.rc == 1
 
 - name: Clean SunFlower deb file
-  file: path=/tmp/download-sunflower-latest.deb state=absent
+  file: 
+    path: /tmp/download-sunflower-latest.deb 
+    state: absent

@@ -1,15 +1,16 @@
 ---
 
 - name: Install Nautilus additional packages
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  with_items:
-    - nautilus-compare
-    - nautilus-image-converter
-    - nautilus-image-manipulator
-    - nautilus-wipe
+  apt: 
+    pkg: ['nautilus-extension-gnome-terminal', 'nautilus-image-converter', 'nautilus-wipe']
+    state: latest 
+    update_cache: yes 
+    cache_valid_time: "{{ aptcachetime }}"
 
 - name: Install Nautilus additional packages for Ubuntu 14.04
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  with_items:
-    - nautilus-open-terminal
+  apt: 
+    pkg: ['nautilus-open-terminal']
+    state: latest 
+    update_cache: yes 
+    cache_valid_time: "{{ aptcachetime }}"
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'

@@ -1,15 +1,21 @@
 ---
+- name: Check if TimeShift is installed
+  command: dpkg-query -W timeshift
+  register: timeshift_check_deb
+  failed_when: timeshift_check_deb.rc > 1
+  changed_when: timeshift_check_deb.rc == 1
+
 - name: Add TimeShift repository 
   apt_repository: 
     repo: ppa:teejee2008/ppa
     state: present
+  when: timeshift_check_deb.rc == 1
 
 - name: Install TimeShift OS Snapshot tool and BTRFS
   apt:
-    pkg: "{{ item }}"
+    pkg: ['timeshift', 'btrfs-progs']
     state: present
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"
-  with_items:
-    - timeshift
-    - btrfs-tools
+  when: timeshift_check_deb.rc == 1
+
