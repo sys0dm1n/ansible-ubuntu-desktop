@@ -38,6 +38,7 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | gimp                     | Install [Gimp](https://www.gimp.org/) and some minor settings |
 | indicator-sysmonitor     | Install [indicator-sysmonitor](https://github.com/fossfreedom/indicator-sysmonitor) from [FOSSFreedom PPA](https://launchpad.net/~fossfreedom/+archive/ubuntu/indicator-sysmonitor)                                                                                                                                                   |
 | lens     | Install [Lens](https://k8slens.dev/) The Kubernetes IDE |
+| kazan               | Install [kazan](https://launchpad.net/kazam) screencast and screencast tool|
 | libreoffice     | Install [LibreOffice](https://www.libreoffice.org/) using [LibreOffice 5.1 PPA](https://launchpad.net/~libreoffice/+archive/ubuntu/libreoffice-5-1) |
 | mysql-workbench          | Install [MySQL WorkBench](https://www.mysql.fr/products/workbench/) from online deb file| 
 | nautilus-plugins         | Install Nautilus (the default file manager for Gnome) plugins|
@@ -53,7 +54,6 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | tmux                     | Install [tmux](https://github.com/tmux/tmux/wiki) tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. And do a lot more. |
 | vagrant                  | Install [Vagrant](https://www.vagrantup.com/) from online deb file|
 | virtualbox               | Install [VirtualBox](https://www.virtualbox.org/) from VirtualBox APT repositories | 
-| vokoscreen               | Install [Vokoscreen](http://www.kohaupt-online.de/hp/) screencast tool|
 |                               | **Services & server tools** |
 | awscli                  | Install [awscli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) the Amazon command line interface |
 | docker                  | Install [Docker](https://www.docker.com/) and Docker compose from Docker deb repository|
