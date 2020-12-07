@@ -2,7 +2,7 @@
 
 - name: Install common desktop packages
   apt: 
-    pkg: ['bleachbit', 'easytag', 'byzanz', 'geany', 'libnotify-bin', 'inotify-tools', 'meld', 'cifs-utils', 'mpv', 'pinta', 'rhythmbox', 'rxvt-unicode-256color', 'sox', 'tilda', 'ubuntu-restricted-extras', 'vlc', 'wmctrl', 'xclip', 'xdotool']
+    pkg: ['caffeine', bleachbit', 'easytag', 'byzanz', 'geany', 'libnotify-bin', 'inotify-tools', 'meld', 'cifs-utils', 'mpv', 'pinta', 'rhythmbox', 'rxvt-unicode-256color', 'sox', 'tilda', 'ubuntu-restricted-extras', 'vlc', 'wmctrl', 'xclip', 'xdotool']
     state: latest
     update_cache: yes 
     cache_valid_time: "{{ aptcachetime }}"
@@ -17,3 +17,4 @@
     #- wmctrl # to control windows
     #- xclip # to manipulate the clipboard
     #- xdotool # to control windows
+    #- caffeine # prevent the desktop becoming idle in full-screen mode

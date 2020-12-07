@@ -1,4 +1,0 @@
----
-
-- name: Install Vokoscreen screenshot tool
-  apt: name=vokoscreen state=present
