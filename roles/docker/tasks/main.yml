@@ -2,9 +2,14 @@
 
 - name: Install requirements
   apt: 
-    pkg: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg-agent', 'software-properties-common']
+    pkg: "{{ item }}" 
     state: latest 
     update_cache: yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
 
 - name: Installing apt-key
   apt_key: 
@@ -13,15 +18,13 @@
     state: present
 
 - name: Add deb repository
-  apt_repository: 
-    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable' 
-    state: present
+  apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable' state=present
 
 - name: Install
-  apt: 
-    pkg: ['linux-image-extra-virtual', 'docker-ce'] 
-    state: latest 
-    update_cache: yes
+  apt: pkg="{{ item }}" state=latest update_cache=yes
+  with_items:
+    - linux-image-extra-virtual
+    - docker-ce
 
 - name: Create Docker group
   group: 

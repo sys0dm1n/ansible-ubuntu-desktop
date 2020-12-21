@@ -2,10 +2,7 @@
 
 - name: Install Gimp
   apt:
-    pkg: gimp
-    state: latest 
-    update_cache: yes 
-    cache_valid_time: "{{ aptcachetime }}"
+    name: gimp
 
 - name: Add Gimp configs
   lineinfile:

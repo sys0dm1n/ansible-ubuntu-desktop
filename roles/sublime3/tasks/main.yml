@@ -1,8 +1,15 @@
 ---
-- name: Install "sublime-text" with option --classic
-  snap:
-    name: sublime-text
-    classic: yes
+
+- name: Add sublime repository
+  apt_repository: 
+    repo: "ppa:webupd8team/sublime-text-3" 
+    state: present
+
+- name: Install latest sublime package
+  apt: 
+    pkg: "sublime-text-installer" 
+    state: latest 
+    update_cache: yes
 
 - name: Prepare sublime directories (1/2)
   file: 
