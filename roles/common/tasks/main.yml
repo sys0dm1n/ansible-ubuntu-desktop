@@ -33,6 +33,7 @@
     - afuse
     - aptitude
     - axel
+    - blueman
     - bash-completion
     - build-essential
     - bzip2
@@ -77,6 +78,12 @@
     - wget
     - whois
     - zip
+
+- name: Enable and start bluetooth.service
+  systemd:
+    name: bluetooth.service
+    state: started
+    enabled: yes
 
 - name: Upgrade installed packages
   apt: 
