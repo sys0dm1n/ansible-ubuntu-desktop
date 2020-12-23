@@ -6,13 +6,43 @@
   failed_when: sunflower_check_deb.rc > 1
   changed_when: sunflower_check_deb.rc == 1
 
+- name: lower SSL security level 1/2
+  blockinfile:
+    path: /etc/ssl/openssl.cnf
+    backup: yes
+    insertbefore: BOF
+    block: |
+      openssl_conf = default_conf
+  changed_when: sunflower_check_deb.rc == 1
+
+- name: lower SSL security level 2/2
+  blockinfile:
+    path: /etc/ssl/openssl.cnf
+    backup: yes
+    insertafter: EOF
+    block: |
+      [ default_conf ]
+      ssl_conf = ssl_sect
+      [ssl_sect]
+      system_default = system_default_sect
+      [system_default_sect]
+      MinProtocol = TLSv1.2
+      CipherString = DEFAULT:@SECLEVEL=1
+  changed_when: sunflower_check_deb.rc == 1
+
 - name: Download SunFlower
-  get_url: url="http://sunflower-fm.org/pub/sunflower-0.3.61-1.all.deb" dest="/tmp/download-sunflower-latest.deb"
+  get_url: 
+    url: "https://sunflower-fm.org/pub/sunflower-0.4.62-3.all.deb" 
+    dest: "/tmp/download-sunflower-latest.deb"
+    validate_certs: no
   when: sunflower_check_deb.rc == 1
 
 - name: Install SunFlower
-  apt: deb="/tmp/download-sunflower-latest.deb"
+  apt: 
+    deb: "/tmp/download-sunflower-latest.deb"
   when: sunflower_check_deb.rc == 1
 
 - name: Clean SunFlower deb file
-  file: path=/tmp/download-sunflower-latest.deb state=absent
+  file: 
+    path: /tmp/download-sunflower-latest.deb 
+    state: absent

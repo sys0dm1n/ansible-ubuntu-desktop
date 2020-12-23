@@ -2,7 +2,7 @@
 
 - name: Install common desktop packages
   apt: 
-    pkg: ['caffeine', bleachbit', 'easytag', 'byzanz', 'geany', 'libnotify-bin', 'inotify-tools', 'meld', 'cifs-utils', 'mpv', 'pinta', 'rhythmbox', 'rxvt-unicode-256color', 'sox', 'tilda', 'ubuntu-restricted-extras', 'vlc', 'wmctrl', 'xclip', 'xdotool']
+    pkg: ['caffeine', 'bleachbit', 'easytag', 'byzanz', 'geany', 'libnotify-bin', 'inotify-tools', 'meld', 'cifs-utils', 'mpv', 'pinta', 'rhythmbox', 'rxvt-unicode-256color', 'sox', 'tilda', 'ubuntu-restricted-extras', 'vlc', 'wmctrl', 'xclip', 'xdotool']
     state: latest
     update_cache: yes 
     cache_valid_time: "{{ aptcachetime }}"

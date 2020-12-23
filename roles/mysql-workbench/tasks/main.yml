@@ -6,9 +6,37 @@
   failed_when: mysql_workbench_check_deb.rc > 1
   changed_when: mysql_workbench_check_deb.rc == 1
 
-- name: Download MySQL WorkBench
-  get_url: url="http://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-6.3.8-1ubu1604-amd64.deb" dest="/tmp/download-mysql-workbench-latest.deb"
-  when: mysql_workbench_check_deb.rc == 1
+- name: lower SSL security level 1/2
+  blockinfile:
+    path: /etc/ssl/openssl.cnf
+    backup: yes
+    insertbefore: BOF
+    block: |
+      openssl_conf = default_conf
+  changed_when: smysql_workbench_check_deb.rc == 1
+
+- name: lower SSL security level 2/2
+  blockinfile:
+    path: /etc/ssl/openssl.cnf
+    backup: yes
+    insertafter: EOF
+    block: |
+      [ default_conf ]
+      ssl_conf = ssl_sect
+      [ssl_sect]
+      system_default = system_default_sect
+      [system_default_sect]
+      MinProtocol = TLSv1.2
+      CipherString = DEFAULT:@SECLEVEL=1
+  changed_when: mysql_workbench_check_deb.rc == 1
+
+- name: Download MySQL WorkBench - 20.10
+  get_url: url="https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.22-1ubuntu20.10_amd64.deb" dest="/tmp/download-mysql-workbench-latest.deb"
+  when: mysql_workbench_check_deb.rc == 1 and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.10'
+
+- name: Download MySQL WorkBench - 20.04
+  get_url: url="https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.22-1ubuntu20.04_amd64.deb" dest="/tmp/download-mysql-workbench-latest.deb"
+  when: mysql_workbench_check_deb.rc == 1 and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 
 - name: Install MySQL WorkBench
   apt: deb="/tmp/download-mysql-workbench-latest.deb"

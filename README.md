@@ -41,16 +41,15 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | kazan               | Install [kazan](https://launchpad.net/kazam) screencast and screencast tool|
 | libreoffice     | Install [LibreOffice](https://www.libreoffice.org/) using [LibreOffice 5.1 PPA](https://launchpad.net/~libreoffice/+archive/ubuntu/libreoffice-5-1) |
 | mysql-workbench          | Install [MySQL WorkBench](https://www.mysql.fr/products/workbench/) from online deb file| 
-| nautilus-plugins         | Install Nautilus (the default file manager for Gnome) plugins|
-| remarkable               | Install [Remarkable](https://remarkableapp.github.io/linux.html) A fully featured markdown editor|
-| remmina                  | Install [Remmina](http://www.remmina.org/) Use other desktops remotely, from a tiny screen or large monitors.|
+| nautilus-plugins         | Install Nautilus plugins|
+| remmina                  | Install [Remmina](http://www.remmina.org/) |
 | skype                    | Install [Skype](https://www.skype.com/)    |
 | slack                    | Install [Slack](https://slack.com/) set of proprietary team collaboration tools and services.   |
 | sublime3                 | Install [Sublime Text 3](https://www.sublimetext.com/3) from [WebUpd8 PPA](https://launchpad.net/~webupd8team/+archive/ubuntu/sublime-text-3) and the [Package Control](https://packagecontrol.io/) plugin   |
-| sunflower                | Install [SunFlower](http://sunflower-fm.org/download) fom online dev. Small and highly customizable twin-panel file manager for Linux|
+| sunflower                | Install [SunFlower](http://sunflower-fm.org/download)fom online dev|
 | teamviewer               | Install [TeamViewer](https://www.teamviewer.com/) from online deb file|
 | thunderbird              | Install [Thunderbird](https://www.mozilla.org/thunderbird/) (no particular settings, basic installation) |
-| timeshift                | Install [TimeShift](https://github.com/teejee2008/timeshift). It provides functionality similar to the System Restore feature in Windows and the Time Machine tool in Mac OS |
+| timeshift                | Install [TimeShift](https://github.com/teejee2008/timeshift) |
 | tmux                     | Install [tmux](https://github.com/tmux/tmux/wiki) tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. And do a lot more. |
 | vagrant                  | Install [Vagrant](https://www.vagrantup.com/) from online deb file|
 | virtualbox               | Install [VirtualBox](https://www.virtualbox.org/) from VirtualBox APT repositories | 
@@ -60,7 +59,6 @@ Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo
 | ecs-cli                 | Install [ecs-cli](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI_installation.html) the Amazon Elastic Container Service|
 | kubectl| Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)  |
 | minikube                   | Install [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)  |
-| python                   | Install [Python](https://www.python.org/)  |
 | ssh                      | Install [OpenSSH Server](http://www.openssh.com/)      | 
 |ufw                   | Install [ufw](https://help.ubuntu.com/community/UFW) |
 

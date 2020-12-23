@@ -1,13 +1,23 @@
 ---
 
-- name: Add sublime repository
-  apt_repository: 
-    repo: "ppa:webupd8team/sublime-text-3" 
+- name: Install GPG key for SubLimeText
+  apt_key:
+    url: https://download.sublimetext.com/sublimehq-pub.gpg
     state: present
+
+- name: Add specified repositories into sources list using specified filename
+  apt_repository:
+    repo: deb {{ item.repo }} {{ item.add }}
+    state: present
+    filename: "{{ item.file }}"
+  with_items:
+    - repo: https://download.sublimetext.com/
+      add: apt/stable/
+      file: sublime
 
 - name: Install latest sublime package
   apt: 
-    pkg: "sublime-text-installer" 
+    pkg: "sublime-text" 
     state: latest 
     update_cache: yes
 
