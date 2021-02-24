@@ -1,0 +1,25 @@
+---
+
+desktop_enabled: 'no'
+desktop:
+  common_packages:
+    - 'caffeine'
+    - 'bleachbit'
+    - 'easytag'
+    - 'byzanz'
+    - 'geany'
+    - 'libnotify-bin'
+    - 'inotify-tools'
+    - 'meld'
+    - 'cifs-utils'
+    - 'mpv'
+    - 'pinta'
+    - 'rhythmbox'
+    - 'rxvt-unicode-256color'
+    - 'sox'
+    - 'tilda'
+    - 'ubuntu-restricted-extras'
+    - 'vlc'
+    - 'wmctrl'
+    - 'xclip'
+    - 'xdotool'

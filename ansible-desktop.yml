@@ -2,44 +2,303 @@
 
 - name: Ubuntu desktop environment playbook
   hosts: localhost
+#  pre_tasks:
+#    - name: Gathering Package Facts
+#      package_facts:
+#        manager: auto
+#      tags:
+#        - dbeaver
   roles:
     ## Common roles
-     - { role: locales, become: true }
-     - { role: common, become: true }
-    # - { role: java-openjdk, become: true }
-    ## Server roles
-    # - { role: awscli, become: false }
-    # - { role: docker, become: true }
-    # - { role: ecs-cli, become: true }
-    # - { role: kubectl, become: true }
-    # - { role: minikube, become: true }
-    # - { role: python, become: true }
-    # - { role: ssh, become: true }
-    # - { role: ufw, become: true }
+    - role: locales
+      become: true
+      tags:
+        - locale
+        - common
+      when: locales_enabled | bool
+    - role: common
+      become: true
+      tags:
+        - common
+      when: common_enabled | bool
+    - role: ufw
+      become: true
+      tags:
+        - ufw
+        - system
+        - common
+      when: ufw_enabled | bool
+    - role: snapd
+      become: true
+      tags:
+        - snapd
+        - system
+        - common
+      when: snapd_enabled | bool
+    ## Developer roles
+    - role: 'aws/cli'
+      tags:
+        - aws
+        - aws:cli
+        - development
+        - development:cli
+        - developer
+      when: aws_enabled or awscli_enabled | bool
+    - role: 'aws/ebcli'
+      tags:
+        - aws
+        - aws:ebcli
+        - development
+        - development:cli
+        - developer
+      when: aws_enabled or awsebcli_enabled | bool
+    - role: 'aws/ecscli'
+      become: true
+      tags:
+        - aws
+        - aws:ecscli
+        - development
+        - development:cli
+        - developer
+      when: aws_enabled or awsecscli_enabled | bool
+    - role: docker
+      become: true
+      tags:
+        - docker
+        - development
+        - development:infrastructure
+        - developer
+      when: docker_enabled | bool
+#    - role: kubectl
+#      become: true
+#      tags:
+#        - kubectl
+#        - development
+#        - development:cli
+#        - developer
+#      when: kubectl_enabled | bool
+#    - role: minikube
+#      become: true
+#      tags:
+#        - minikube
+#        - development
+#        - development:infrastructure
+#        - developer
+#      when: minikube_enabled | bool
+    - role: java-openjdk
+      become: true
+      tags:
+        - java-openjdk
+        - development
+        - development:programing
+        - developer
+      when: java_openjdk_enabled | bool
+    - role: python
+      become: true
+      tags:
+        - python
+        - development
+        - development:programing
+        - developer
+      when: python_enabled | bool
+    - role: ssh
+      become: true
+      tags:
+        - ssh
+        - network
+        - developer
+      when: ssh_enabled | bool
     ## Desktop roles
-     - { role: desktop, become: true }
-    # - { role: atom, become: true }
-    # - { role: chromium, become: true }
-    # - { role: dbeaver, become: true }
-    # - { role: filezilla, become: true }
-    # - { role: firefox, become: true }
-    # - { role: gimp, become: true }
-    # - { role: indicator-sysmonitor, become: true }
-    # - { role: lens, become: true }
-    # - { role: libreoffice, become: true }
-    # - { role: mysql-workbench, become: true }
-    # - { role: nautilus-plugins, become: true }
-    # - { role: notify-osd, become: true }
-    # - { role: remarkable, become: true }
-    # - { role: remmina, become: true }
-    # - { role: skype, become: true }
-    # - { role: sublime3, become: true }
-    # - { role: slack, become: true}
-    # - { role: sunflower, become: true }
-    # - { role: teamviewer, become: true }
-    # - { role: thunderbird, become: true }
-    # - { role: timeshift, become: true }
-    # - { role: tmux, become: true }
-    # - { role: vagrant, become: true }
-    # - { role: virtualbox, become: true }
-    # - { role: vokoscreen, become: true }
+    - role: desktop
+      tags:
+        - desktop
+      when: desktop_enabled | bool
+    - role: 'pop_os/shell'
+      tags:
+        - pop_os
+        - pop_os:shell
+        - desktop
+      when: pop_os_enabled or pop_os_shell_enabled | bool
+    - role: atom
+      become: true
+      tags:
+        - atom
+        - desktop
+        - development
+        - development:editor
+      when: atom_enabled | bool
+    - role: chromium
+      become: true
+      tags:
+        - chromium
+        - network
+        - desktop
+      when: chromium_enabled | bool
+    - role: dbeaver
+      become: true
+      tags:
+        - dbeaver
+        - desktop
+        - development
+        - development:database
+      when: dbeaver_enabled | bool
+    - role: filezilla
+      become: true
+      tags:
+        - filezilla
+        - network
+        - desktop
+      when: filezilla_enabled | bool
+    - role: firefox
+      become: true
+      tags:
+        - firefox
+        - network
+        - desktop
+      when: firefox_enabled | bool
+    - role: gimp
+      become: true
+      tags:
+        - gimp
+        - graphics
+        - desktop
+      when: gimp_enabled | bool
+    - role: indicator-sysmonitor
+      become: true
+      tags:
+        - indicator-sysmonitor
+        - system
+        - desktop
+      when: indicator_sysmonitor_enabled | bool
+    - role: lens
+      become: true
+      tags:
+        - lens
+        - desktop
+        - development
+        - development:editor
+      when: lens_enabled | bool
+    - role: libreoffice
+      become: true
+      tags:
+        - libreoffice
+        - office
+        - desktop
+      when: libreoffice_enabled | bool
+    - role: mysql-workbench
+      become: true
+      tags:
+        - mysql-workbench
+        - desktop
+        - development
+        - development:database
+      when: mysql_workbench_enabled | bool
+    - role: nautilus-plugins
+      become: true
+      tags:
+        - nautilus-plugins
+        - desktop
+        - utility
+      when: nautilus_plugins_enabled | bool
+#    - role: notify-osd
+#      become: true
+#      tags:
+#        - desktop
+#        - notify-osd
+#        - devops
+#        - devs
+#      when: notify-osd_enabled | bool
+#    - role: remarkable
+#      become: true
+#      tags:
+#        - desktop
+#        - remarkable
+#        - devops
+#        - devs
+#      when: remarkable_enabled | bool
+    - role: remmina
+      become: true
+      tags:
+        - remmina
+        - network
+        - desktop
+      when: remmina_enabled | bool
+    - role: skype
+      become: true
+      tags:
+        - skype
+        - network
+        - desktop
+      when: skype_enabled | bool
+    - role: sublime3
+      become: true
+      tags:
+        - sublime3
+        - desktop
+        - development
+        - development:editor
+      when: sublime3_enabled | bool
+    - role: slack
+      tags:
+        - slack
+        - network
+        - desktop
+      when: slack_enabled | bool
+    - role: sunflower
+      become: true
+      tags:
+        - sunflower
+        - utility
+        - desktop
+      when: sunflower_enabled | bool
+    - role: teamviewer
+      become: true
+      tags:
+        - teamviewer
+        - network
+        - desktop
+        - utility
+      when: teamviewer_enabled | bool
+    - role: thunderbird
+      become: true
+      tags:
+        - thunderbird
+        - network
+        - desktop
+      when: thunderbird_enabled | bool
+    - role: timeshift
+      become: true
+      tags:
+        - timeshift
+        - system
+        - desktop
+      when: timeshift_enabled | bool
+    - role: tmux
+      become: true
+      tags:
+        - tmux
+        - utility
+        - desktop
+      when: tmux_enabled | bool
+    - role: vagrant
+      become: true
+      tags:
+        - vagrant
+        - development
+        - development:infrastructure
+      when: vagrant_enabled | bool
+    - role: virtualbox
+      become: true
+      tags:
+        - virtualbox
+        - development
+        - development:infrastructure
+      when: virtualbox_enabled | bool
+#    - role: vokoscreen
+#      become: true
+#      tags:
+#        - desktop
+#        - vokoscreen
+#        - devops
+#        - devs
+#      when: vokoscreen_enabled | bool

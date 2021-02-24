@@ -1,5 +1,50 @@
 ---
 
+common_enabled:  yes
+locales_enabled: yes
+desktop_enabled: yes
+
+atom_enabled:                 no
+aws_enabled:                  no
+awscli_enabled:               no
+awsebcli_enabled:             no
+awsecscli_enabled:            no
+chromium_enabled:             no
+common_git_enabled:           no
+dbeaver_enabled:              no
+docker_enabled:               no
+filezilla_enabled:            no
+firefox_enabled:              no
+gimp_enabled:                 no
+indicator_sysmonitor_enabled: no
+java_openjdk_enabled:         no
+kazan_enabled:                no
+kubectl_enabled:              no
+lens_enabled:                 no
+libreoffice_enabled:          no
+minikube_enabled:             no
+mysql_workbench_enabled:      no
+nautilus_plugins_enabled:     no
+notify-osd_enabled:           no
+pop_os_enabled:               no
+pop_os_shell_enabled:         no
+python_enabled:               no
+remmina_enabled:              no
+shutter_enabled:              no
+skype_enabled:                no
+slack_enabled:                no
+snapd_enabled:                no
+ssh_enabled:                  no
+sublime3_enabled:             no
+sunflower_enabled:            no
+teamviewer_enabled:           no
+thunderbird_enabled:          no
+timeshift_enabled:            no
+tmux_enabled:                 no
+ufw_enabled:                  no
+vagrant_enabled:              no
+virtualbox_enabled:           no
+
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 aptcachetime: 3600
 locale: "en_US.UTF-8"

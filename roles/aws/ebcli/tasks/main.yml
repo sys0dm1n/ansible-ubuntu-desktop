@@ -1,0 +1,6 @@
+---
+
+- name: Install awsebcli package
+  pip: 
+    name: awsebcli 
+    state: present
