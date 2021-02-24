@@ -1,8 +1,10 @@
 ---
 
-- name: Install Default OpenJDK
+- name: Install snapd package
+  become: true
   apt: 
-    pkg: ["default-jdk", "default-jre-headless"]
+    pkg: snapd
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"
+  

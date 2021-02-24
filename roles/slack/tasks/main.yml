@@ -1,10 +1,8 @@
 ---
 
-- name: Install snapd package
-  apt: pkg=snapd state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-
 - name: Install slack
-  command: sudo snap install slack --classic
+  become: true
+  command: snap install slack --classic
 
 
 #- name: Check if Slack is installed

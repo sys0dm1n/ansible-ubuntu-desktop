@@ -1,0 +1,53 @@
+---
+
+common_enabled: 'no'
+common:
+  packages:
+    - afuse
+    - aptitude
+    - axel
+    - blueman
+    - bash-completion
+    - build-essential
+    - bzip2
+    - colortest
+    - curl
+    - diffutils
+    - dos2unix
+    - fdupes
+    - ftp-ssl
+    - gawk
+    - gcc
+    - grep
+    - gzip
+    - htop
+    - httping
+    - iftop
+    - imagemagick
+    - iotop
+    - less
+    - lftp
+    - make
+    - mtr
+    - nfs-common
+    - nmap
+    - openssl
+    - p7zip
+    - pv
+    - pwgen
+    - ranger
+    - rar
+    - rsync
+    - smbclient
+    - software-properties-common
+    - sshfs
+    - sshpass
+    - tar
+    - tmux
+    - trash-cli
+    - tig
+    - unzip
+    - vim
+    - wget
+    - whois
+    - zip
