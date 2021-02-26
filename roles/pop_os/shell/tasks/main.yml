@@ -3,19 +3,19 @@
 - name: Install Pop!_OS shell dependencies
   become: true
   apt: 
-    pkg: ["node-typescript", "make"]
+    pkg: ["node-typescript", "make", "chrome-gnome-shell"]
     state: latest
     update_cache: yes 
     cache_valid_time: "{{ aptcachetime }}"
 
 - name: Git checkout Pop!_OS shell
   ansible.builtin.git:
-    repo: 'https://github.com/pop-os/shell.git'
-    dest: /tmp/pop-os-shell
+    repo: 'https://github.com/pop-os/shell'
+    dest: ~/.cache/pop-os-shell
     version: master
 
 - name: Make and Install Pop!_OS shell
   shell: 
     cmd: make && make install
-    chdir: /tmp/pop-os-shell
+    chdir: ~/.cache/pop-os-shell
     creates: "~/.local/share/gnome-shell/extensions/pop-shell@system76.com/metadata.json"
