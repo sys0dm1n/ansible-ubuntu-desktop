@@ -10,6 +10,11 @@
 #        - dbeaver
   roles:
     ## Common roles
+    - role: zsh
+      tags:
+        - zsh
+        - development
+      when: zsh_enabled | bool
     - role: locales
       become: true
       tags:
@@ -86,7 +91,6 @@
 #        - developer
 #      when: minikube_enabled | bool
     - role: java-openjdk
-      become: true
       tags:
         - java-openjdk
         - development
@@ -94,13 +98,19 @@
         - developer
       when: java_openjdk_enabled | bool
     - role: python
-      become: true
       tags:
         - python
         - development
         - development:programing
         - developer
       when: python_enabled | bool
+    - role: golang
+      tags:
+        - golang
+        - development
+        - development:programing
+        - developer
+      when: golang_enabled | bool
     - role: ssh
       become: true
       tags:

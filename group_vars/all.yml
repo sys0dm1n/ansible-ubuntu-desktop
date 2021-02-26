@@ -16,6 +16,7 @@ docker_enabled:               no
 filezilla_enabled:            no
 firefox_enabled:              no
 gimp_enabled:                 no
+golang_enabled:               no
 indicator_sysmonitor_enabled: no
 java_openjdk_enabled:         no
 kazan_enabled:                no
@@ -44,6 +45,7 @@ tmux_enabled:                 no
 ufw_enabled:                  no
 vagrant_enabled:              no
 virtualbox_enabled:           no
+zsh_enabled:                  no
 
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 aptcachetime: 3600

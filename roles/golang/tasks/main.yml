@@ -1,9 +1,9 @@
 ---
 
-- name: Install Default OpenJDK
+- name: Install golang packages
   become: true
   apt: 
-    pkg: ["default-jdk", "default-jre-headless"]
+    pkg: ["goalng"]
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"
