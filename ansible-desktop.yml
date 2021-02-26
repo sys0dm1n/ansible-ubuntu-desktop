@@ -10,11 +10,6 @@
 #        - dbeaver
   roles:
     ## Common roles
-    - role: zsh
-      tags:
-        - zsh
-        - development
-      when: zsh_enabled | bool
     - role: locales
       become: true
       tags:
@@ -115,14 +110,23 @@
       become: true
       tags:
         - ssh
-        - network
-        - developer
+        - development
       when: ssh_enabled | bool
+    - role: zsh
+      tags:
+        - zsh
+        - development
+      when: zsh_enabled | bool
     ## Desktop roles
     - role: desktop
       tags:
         - desktop
       when: desktop_enabled | bool
+    - role: dots
+      tags:
+        - dots
+        - development
+      when: dots_enabled | bool
     - role: 'pop_os/shell'
       tags:
         - pop_os

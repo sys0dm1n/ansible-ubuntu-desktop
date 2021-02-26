@@ -1,0 +1,22 @@
+---
+
+#- name: Install Pop!_OS shell dependencies
+#  become: true
+#  apt: 
+#    pkg: ["node-typescript", "make", "chrome-gnome-shell"]
+#    state: latest
+#    update_cache: yes 
+#    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Git checkout Dots Template
+  git:
+    repo: 'https://github.com/EvanPurkhiser/dots-template'
+    dest: ~/.cache/dots-template
+    version: master
+
+- name: Install Dots
+  shell: 
+    cmd: source init-dots
+    chdir: ~/.cache/dots-template
+    creates: "~/.local/bin/dots"
+  when: not ansible_check_mode
