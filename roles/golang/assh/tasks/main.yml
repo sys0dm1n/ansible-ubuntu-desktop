@@ -1,0 +1,21 @@
+---
+
+- name: Check if assh is installed
+  stat:
+    path: "~/.local/lib/go/bin/assh"
+  register: result
+
+- name: Install assh
+  shell: 
+    cmd: |
+      go get -u moul.io/assh/v2
+    chdir: ~
+    creates:
+      - "~/.local/lib/go/bin/assh"
+  when: result is not success and not ansible_check_mode
+
+- name: Setup assh symlink into ~/.local/bin
+  file:
+    src: "~/.local/lib/go/bin/assh"
+    dest: "~/.local/bin/assh"
+    state: link

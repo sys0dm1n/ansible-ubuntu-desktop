@@ -61,6 +61,22 @@
         - development:cli
         - developer
       when: aws_enabled or awsecscli_enabled | bool
+    - role: terraform/tfenv
+      tags:
+        - terraform
+        - tfenv
+        - development
+        - development:infrastructure
+        - devops
+      when: tfenv_enabled | bool
+    - role: terraform/tgenv
+      tags:
+        - terraform
+        - tgenv
+        - development
+        - development:infrastructure
+        - devops
+      when: tgenv_enabled | bool
     - role: docker
       become: true
       tags:
@@ -99,19 +115,43 @@
         - development:programing
         - developer
       when: python_enabled | bool
-    - role: golang
+    - role: golang/language
       tags:
-        - golang
+        - go
         - development
         - development:programing
         - developer
       when: golang_enabled | bool
+    - role: ruby/rbenv
+      tags:
+        - ruby
+        - ruby:rbenv
+        - development
+        - development:programing
+        - developer
+      when: ruby_enabled | bool
     - role: ssh
       become: true
       tags:
         - ssh
         - development
       when: ssh_enabled | bool
+    - role: golang/assh
+      tags:
+        - go
+        - go:assh
+        - development
+        - development:programing
+        - developer
+      when: go_assh_enabled | bool
+    - role: ruby/landscape
+      tags:
+        - ruby
+        - ruby:landscape
+        - development
+        - development:programing
+        - developer
+      when: ruby_landscape_enabled | bool
     - role: zsh
       tags:
         - zsh

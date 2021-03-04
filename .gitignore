@@ -1,3 +1,4 @@
+.galaxy/
 *.retry
 group_vars/_*.yml
 group_vars/local.yml

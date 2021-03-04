@@ -17,7 +17,8 @@ dots_enabled:                 no
 filezilla_enabled:            no
 firefox_enabled:              no
 gimp_enabled:                 no
-golang_enabled:               no
+go_enabled:                   no
+go_assh_enabled:              no
 indicator_sysmonitor_enabled: no
 java_openjdk_enabled:         no
 kazan_enabled:                no
@@ -32,6 +33,9 @@ pop_os_enabled:               no
 pop_os_shell_enabled:         no
 python_enabled:               no
 remmina_enabled:              no
+ruby_enabled:                 no
+ruby_rbenv_enabled:           no
+ruby_landscape_enabled:       no
 shutter_enabled:              no
 skype_enabled:                no
 slack_enabled:                no
@@ -40,6 +44,8 @@ ssh_enabled:                  no
 sublime3_enabled:             no
 sunflower_enabled:            no
 teamviewer_enabled:           no
+tfenv_enabled:                no
+tgenv_enabled:                no
 thunderbird_enabled:          no
 timeshift_enabled:            no
 tmux_enabled:                 no

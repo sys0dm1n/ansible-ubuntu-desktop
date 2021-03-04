@@ -1,0 +1,31 @@
+---
+
+- name: Git checkout tfenv
+  git:
+    repo: 'https://github.com/tfutils/tfenv'
+    dest: ~/.local/lib/tfenv
+    version: master
+  register: result
+
+- name: Install tfenv binary
+  file:
+    src: ~/.local/lib/tfenv/bin/{{ item }}
+    dest: ~/.local/bin/{{ item }}
+    state: link
+  loop:
+    - terraform
+    - tfenv
+  when: result is success and not ansible_check_mode
+  register: result
+
+- name: Install and setup terraform
+  shell: 
+    cmd: |
+      tfenv install 0.14.7
+      tfenv use 0.14.7
+    chdir: ~
+    creates: "~/.local/lib/tfenv/versions/0.14.7/terraform"
+  when: not ansible_check_mode
+
+# Autocomplete for bash and zsh
+# grep -q ".local/lib/tfenv/versions/0.14.7/terraform" ~/.bashrc ~/.zshrc && true || terraform -install-autocomplete
