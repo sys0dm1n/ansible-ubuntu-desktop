@@ -2,12 +2,6 @@
 
 - name: Ubuntu desktop environment playbook
   hosts: localhost
-#  pre_tasks:
-#    - name: Gathering Package Facts
-#      package_facts:
-#        manager: auto
-#      tags:
-#        - dbeaver
   roles:
     ## Common roles
     - role: locales
@@ -35,128 +29,6 @@
         - system
         - common
       when: snapd_enabled | bool
-    ## Developer roles
-    - role: 'aws/cli'
-      tags:
-        - aws
-        - aws:cli
-        - development
-        - development:cli
-        - developer
-      when: aws_enabled or awscli_enabled | bool
-    - role: 'aws/ebcli'
-      tags:
-        - aws
-        - aws:ebcli
-        - development
-        - development:cli
-        - developer
-      when: aws_enabled or awsebcli_enabled | bool
-    - role: 'aws/ecscli'
-      become: true
-      tags:
-        - aws
-        - aws:ecscli
-        - development
-        - development:cli
-        - developer
-      when: aws_enabled or awsecscli_enabled | bool
-    - role: terraform/tfenv
-      tags:
-        - terraform
-        - tfenv
-        - development
-        - development:infrastructure
-        - devops
-      when: tfenv_enabled | bool
-    - role: terraform/tgenv
-      tags:
-        - terraform
-        - tgenv
-        - development
-        - development:infrastructure
-        - devops
-      when: tgenv_enabled | bool
-    - role: docker
-      become: true
-      tags:
-        - docker
-        - development
-        - development:infrastructure
-        - developer
-      when: docker_enabled | bool
-#    - role: kubectl
-#      become: true
-#      tags:
-#        - kubectl
-#        - development
-#        - development:cli
-#        - developer
-#      when: kubectl_enabled | bool
-#    - role: minikube
-#      become: true
-#      tags:
-#        - minikube
-#        - development
-#        - development:infrastructure
-#        - developer
-#      when: minikube_enabled | bool
-    - role: java-openjdk
-      tags:
-        - java-openjdk
-        - development
-        - development:programing
-        - developer
-      when: java_openjdk_enabled | bool
-    - role: python
-      tags:
-        - python
-        - development
-        - development:programing
-        - developer
-      when: python_enabled | bool
-    - role: golang/language
-      tags:
-        - go
-        - development
-        - development:programing
-        - developer
-      when: golang_enabled | bool
-    - role: ruby/rbenv
-      tags:
-        - ruby
-        - ruby:rbenv
-        - development
-        - development:programing
-        - developer
-      when: ruby_enabled | bool
-    - role: ssh
-      become: true
-      tags:
-        - ssh
-        - development
-      when: ssh_enabled | bool
-    - role: golang/assh
-      tags:
-        - go
-        - go:assh
-        - development
-        - development:programing
-        - developer
-      when: go_assh_enabled | bool
-    - role: ruby/landscape
-      tags:
-        - ruby
-        - ruby:landscape
-        - development
-        - development:programing
-        - developer
-      when: ruby_landscape_enabled | bool
-    - role: zsh
-      tags:
-        - zsh
-        - development
-      when: zsh_enabled | bool
     ## Desktop roles
     - role: desktop
       tags:
@@ -348,6 +220,128 @@
         - development
         - development:infrastructure
       when: virtualbox_enabled | bool
+    ## Service / CLI / Server roles
+    - role: 'aws/cli'
+      tags:
+        - aws
+        - aws:cli
+        - development
+        - development:cli
+        - developer
+      when: aws_enabled or awscli_enabled | bool
+    - role: 'aws/ebcli'
+      tags:
+        - aws
+        - aws:ebcli
+        - development
+        - development:cli
+        - developer
+      when: aws_enabled or awsebcli_enabled | bool
+    - role: 'aws/ecscli'
+      become: true
+      tags:
+        - aws
+        - aws:ecscli
+        - development
+        - development:cli
+        - developer
+      when: aws_enabled or awsecscli_enabled | bool
+    - role: terraform/tfenv
+      tags:
+        - terraform
+        - tfenv
+        - development
+        - development:infrastructure
+        - devops
+      when: tfenv_enabled | bool
+    - role: terraform/tgenv
+      tags:
+        - terraform
+        - tgenv
+        - development
+        - development:infrastructure
+        - devops
+      when: tgenv_enabled | bool
+    - role: docker
+      become: true
+      tags:
+        - docker
+        - development
+        - development:infrastructure
+        - developer
+      when: docker_enabled | bool
+#    - role: kubectl
+#      become: true
+#      tags:
+#        - kubectl
+#        - development
+#        - development:cli
+#        - developer
+#      when: kubectl_enabled | bool
+#    - role: minikube
+#      become: true
+#      tags:
+#        - minikube
+#        - development
+#        - development:infrastructure
+#        - developer
+#      when: minikube_enabled | bool
+    - role: java-openjdk
+      tags:
+        - java-openjdk
+        - development
+        - development:programing
+        - developer
+      when: java_openjdk_enabled | bool
+    - role: python
+      tags:
+        - python
+        - development
+        - development:programing
+        - developer
+      when: python_enabled | bool
+    - role: golang/language
+      tags:
+        - go
+        - development
+        - development:programing
+        - developer
+      when: golang_enabled | bool
+    - role: ruby/rbenv
+      tags:
+        - ruby
+        - ruby:rbenv
+        - development
+        - development:programing
+        - developer
+      when: ruby_enabled | bool
+    - role: ssh
+      become: true
+      tags:
+        - ssh
+        - development
+      when: ssh_enabled | bool
+    - role: golang/assh
+      tags:
+        - go
+        - go:assh
+        - development
+        - development:programing
+        - developer
+      when: go_assh_enabled | bool
+    - role: ruby/landscape
+      tags:
+        - ruby
+        - ruby:landscape
+        - development
+        - development:programing
+        - developer
+      when: ruby_landscape_enabled | bool
+    - role: zsh
+      tags:
+        - zsh
+        - development
+      when: zsh_enabled | bool
 #    - role: vokoscreen
 #      become: true
 #      tags:

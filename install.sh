@@ -11,10 +11,11 @@ if ! hash ansible >/dev/null 2>&1; then
     echo "Installing Ansible..."
     sudo apt-get update
     sudo apt-get install software-properties-common ansible git python-apt -y
-    ansible-galaxy collection install community.general
 else
     echo "Ansible already installed"
 fi
+
+ansible-galaxy collection install community.general
 
 #####################################
 # Display real installation process #
