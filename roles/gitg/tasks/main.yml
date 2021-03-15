@@ -1,8 +1,8 @@
 ---
 
-- name: Install Firefox
+- name: Install gitg
   apt: 
-    pkg: firefox
+    pkg: gitg
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"

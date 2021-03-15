@@ -1,0 +1,16 @@
+---
+
+- name: Set OS and Desktop specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version}}-{{ ( ansible_env.ORIGINAL_XDG_CURRENT_DESKTOP | default(ansible_env.XDG_CURRENT_DESKTOP) ).split(':')[1] | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ( ansible_env.ORIGINAL_XDG_CURRENT_DESKTOP | default(ansible_env.XDG_CURRENT_DESKTOP) ).split(':')[1] | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version}}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+
+- name: Install
+  apt:
+    pkg: ["virt-manager", "{{ virtmanager_askpass }}"]
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

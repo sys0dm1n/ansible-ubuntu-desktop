@@ -8,8 +8,9 @@
 - name: Install Atom text editor
   apt: 
     name: atom 
-    state: present 
+    state: present
     update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
 
 - name: Setup Atom Packages
   apm: name=sync-settings # All others packages are managed by sync-settings

@@ -1,0 +1,4 @@
+---
+dependencies:
+  - role: desktop
+  - role: java/openjre

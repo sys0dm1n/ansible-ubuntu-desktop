@@ -1,0 +1,34 @@
+- name: Get assets
+  get_url:
+    url: "https://api.github.com/repos/angryip/ipscan/releases/latest"
+    force: yes
+    headers:
+      Accept: "application/vnd.github.v3+json"
+    dest: "/tmp/{{ angryipscanner_assets_response }}"
+
+- name: Get download url
+  shell: |
+    cat "/tmp/{{ angryipscanner_assets_response }}" | jq '.assets | .[] | select(.browser_download_url | contains("_all.deb")) | .url' | sed -e 's/^"//' -e 's/"$//'
+  register: "download_url"
+
+- debug:
+    msg: "{{ download_url.stdout }}"
+
+- name: Download latest release
+  get_url:
+    url: "{{ download_url.stdout }}"
+    dest: /tmp/angryipscanner_latest_all.deb
+    tmp_dest: /tmp/
+    force: yes
+    headers:
+      Accept: "application/octet-stream"
+
+- name: Ensure /tmp/angryipscanner_latest_all.deb file exists
+  stat: 
+    path: /tmp/angryipscanner_latest_all.deb
+  register: angryipscanner_deb
+
+- name: Install Angry IP Scanner
+  apt: 
+    deb: "/tmp/angryipscanner_latest_all.deb"
+  when: angryipscanner_deb.stat.exists

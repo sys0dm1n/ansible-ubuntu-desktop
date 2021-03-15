@@ -1,8 +1,8 @@
 ---
 
-- name: Install Firefox
+- name: Install syncthing-gtk
   apt: 
-    pkg: firefox
-    state: latest
+    pkg: ["syncthing-gtk"]
+    state: present
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"

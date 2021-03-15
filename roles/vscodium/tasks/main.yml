@@ -1,0 +1,16 @@
+---
+
+- name: Configure the VSCodium APT key
+  apt_key: 
+    url: "https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg"
+    state: present
+
+- name: Configure the VSCodium APT repositories
+  apt_repository: 
+    repo: "deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main"
+    state: present
+
+- name: Install VSCodium
+  apt: 
+    pkg: codium
+    state: present

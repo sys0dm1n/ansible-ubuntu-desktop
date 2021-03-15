@@ -1,8 +1,8 @@
 ---
 
-- name: Install Firefox
+- name: Install solaar
   apt: 
-    pkg: firefox
-    state: latest
+    pkg: ["solaar"]
+    state: present
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"

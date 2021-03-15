@@ -1,0 +1,5 @@
+---
+
+ledger_live_enabled: no
+ledger_live_version: 2.23.0
+ledger_live_sha512: "4e9c4bee4345e194d26bc4dbe35c7b1bb3cd9d8f9661c99f444253423718f105768a5bbf5d8ff6cf0f1c7250323f4e5cc6ebe1c8d76c8e13ae819f0385fa1309"

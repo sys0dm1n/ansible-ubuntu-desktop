@@ -1,0 +1,190 @@
+---
+
+- name: Ubuntu Desktop Playbook
+  hosts: localhost
+  roles:
+    - role: desktop
+      when: desktop_enabled | bool
+    - role: angryipscanner
+      become: true
+      tags:
+        - angryipscanner
+      when: angryipscanner_enabled | bool
+    - role: atom
+      become: true
+      tags:
+        - atom
+      when: atom_enabled | bool
+    - role: barrier
+      become: true
+      tags:
+        - barrier
+      when: barrier_enabled | bool
+    - role: bitwarden
+      become: true
+      tags:
+        - bitwarden
+      when: bitwarden_enabled | bool
+    - role: chromium
+      become: true
+      tags:
+        - chromium
+      when: chromium_enabled | bool
+    - role: discord
+      become: true
+      tags:
+        - discord
+      when: discord_enabled | bool
+    - role: filezilla
+      become: true
+      tags:
+        - filezilla
+      when: filezilla_enabled | bool
+    - role: firefox
+      become: true
+      tags:
+        - firefox
+      when: firefox_enabled | bool
+    - role: gimp
+      become: true
+      tags:
+        - gimp
+      when: gimp_enabled | bool
+    - role: gitg
+      become: true
+      tags:
+        - gitg
+      when: gitg_enabled | bool
+    - role: gnome-encfs-manager
+      become: true
+      tags:
+        - gnome-encfs-manager
+      when: gnome_encfs_manager_enabled | bool
+    - role: gparted
+      become: true
+      tags:
+        - gparted
+      when: gparted_enabled | bool
+    - role: guake
+      become: true
+      tags:
+        - guake
+      when: guake_enabled | bool
+    - role: indicator-sysmonitor
+      become: true
+      tags:
+        - indicator-sysmonitor
+      when: indicator_sysmonitor_enabled | bool
+    - role: handbrake
+      become: true
+      tags:
+        - handbrake
+      when: handbrake_enabled | bool
+    - role: ledger-live
+      tags:
+        - ledger-live
+      when: ledger_live_enabled | bool
+    - role: libreoffice
+      become: true
+      tags:
+        - libreoffice
+      when: libreoffice_enabled | bool
+    - role: losslesscut
+      become: true
+      tags:
+        - losslesscut
+      when: losslesscut_enabled | bool
+    - role: nautilus-plugins
+      become: true
+      tags:
+        - nautilus-plugins
+      when: nautilus_plugins_enabled | bool
+    - role: nextcloud
+      become: true
+      tags:
+        - nextcloud
+      when: nextcloud_enabled | bool
+    - role: noisetorch
+      tags:
+        - noisetorch
+      when: noisetorch_enabled | bool
+#    - role: notify-osd
+#      become: true
+#      tags:
+#        - desktop
+#        - notify-osd
+#        - devops
+#        - devs
+#      when: notify-osd_enabled | bool
+#    - role: remarkable
+#      become: true
+#      tags:
+#        - desktop
+#        - remarkable
+#        - devops
+#        - devs
+#      when: remarkable_enabled | bool
+    - role: 'pop_os/shell'
+      tags:
+        - pop_os
+        - pop_os:shell
+      when: pop_os_enabled or pop_os_shell_enabled | bool
+    - role: remmina
+      become: true
+      tags:
+        - remmina
+      when: remmina_enabled | bool
+    - role: signal
+      become: true
+      tags:
+        - signal
+      when: signal_enabled | bool
+    - role: skype
+      become: true
+      tags:
+        - skype
+      when: skype_enabled | bool
+    - role: solaar
+      become: true
+      tags:
+        - solaar
+      when: solaar_enabled | bool
+    - role: sublime3
+      become: true
+      tags:
+        - sublime3
+      when: sublime3_enabled | bool
+    - role: slack
+      tags:
+        - slack
+      when: slack_enabled | bool
+    - role: sunflower
+      become: true
+      tags:
+        - sunflower
+      when: sunflower_enabled | bool
+    - role: syncthing
+      become: true
+      tags:
+        - syncthing
+      when: syncthing_enabled | bool
+    - role: teamviewer
+      become: true
+      tags:
+        - teamviewer
+      when: teamviewer_enabled | bool
+    - role: thunderbird
+      become: true
+      tags:
+        - thunderbird
+      when: thunderbird_enabled | bool
+    - role: timeshift
+      become: true
+      tags:
+        - timeshift
+      when: timeshift_enabled | bool
+    - role: winbox
+      become: true
+      tags:
+        - winbox
+      when: winbox_enabled | bool

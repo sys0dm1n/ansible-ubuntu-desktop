@@ -1,0 +1,37 @@
+---
+
+- name: Ubuntu Common Playbook
+  hosts: localhost
+  roles:
+    - role: common
+      become: true
+      tags:
+        - common
+      when: common_enabled | bool
+    - role: locales
+      become: true
+      tags:
+        - locale
+        - common
+      when: locales_enabled | bool
+    - role: ufw
+      become: true
+      tags:
+        - ufw
+        - system
+        - common
+      when: ufw_enabled | bool
+    - role: snapd
+      become: true
+      tags:
+        - snapd
+        - system
+        - common
+      when: snapd_enabled | bool
+    - role: tlp
+      become: true
+      tags:
+        - tlp
+        - system
+        - common
+      when: tlp_enabled | bool

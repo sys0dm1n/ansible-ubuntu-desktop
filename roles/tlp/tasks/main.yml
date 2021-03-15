@@ -1,0 +1,16 @@
+---
+
+- name: Add tlp and tlpui PPA repositories
+  apt_repository: 
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - "ppa:linrunner/tlp"
+    - "ppa:linuxuprising/apps"
+
+- name: Install TLP and TLPUI
+  apt: 
+    pkg: ["tlp", "tlp-rdw", "tlpui", "smartmontools", "acpi-call-dkms"] 
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

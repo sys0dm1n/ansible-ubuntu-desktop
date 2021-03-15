@@ -1,8 +1,8 @@
 ---
 
-- name: Install Firefox
+- name: Install Handbrake
   apt: 
-    pkg: firefox
+    pkg: ["handbrake"]
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"

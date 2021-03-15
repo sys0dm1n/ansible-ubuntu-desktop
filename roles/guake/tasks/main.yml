@@ -1,8 +1,8 @@
 ---
 
-- name: Install Firefox
+- name: Install guake
   apt: 
-    pkg: firefox
-    state: latest
+    pkg: guake
+    state: present
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"

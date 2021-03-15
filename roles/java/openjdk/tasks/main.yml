@@ -1,8 +1,9 @@
 ---
 
-- name: Install Firefox
+- name: Install Default OpenJDK
+  become: true
   apt: 
-    pkg: firefox
+    pkg: ["default-jdk"]
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"

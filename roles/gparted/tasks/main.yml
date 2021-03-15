@@ -1,8 +1,8 @@
 ---
 
-- name: Install Firefox
+- name: Install gparted
   apt: 
-    pkg: firefox
-    state: latest
+    pkg: gparted
+    state: present
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"

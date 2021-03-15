@@ -2,16 +2,17 @@
 
 desktop_enabled: 'no'
 desktop:
-  common_packages:
-    - 'caffeine'
+  packages:
     - 'bleachbit'
-    - 'easytag'
     - 'byzanz'
-    - 'geany'
-    - 'libnotify-bin'
-    - 'inotify-tools'
-    - 'meld'
+    - 'caffeine'
     - 'cifs-utils'
+    - 'easytag'
+    - 'geany'
+    - 'inotify-tools'
+    - 'jq'
+    - 'libnotify-bin'
+    - 'meld'
     - 'mpv'
     - 'pinta'
     - 'rhythmbox'
