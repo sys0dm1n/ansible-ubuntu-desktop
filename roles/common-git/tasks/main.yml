@@ -1,6 +1,7 @@
 ---
 
   - name: Install git
+    become: true
     apt: 
       pkg: git-core
       state: present
@@ -11,7 +12,5 @@
     copy: 
       src: gitconfig
       dest: "{{ ansible_env.HOME }}/.gitconfig" 
-      owner: "{{ ansible_env.USER }}" 
-      group: "{{ ansible_env.USER }}"
-      mode: 644
+      mode: '0644'
       backup: yes

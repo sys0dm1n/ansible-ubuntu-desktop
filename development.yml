@@ -34,10 +34,19 @@
         - docker
         - development:infrastructure
       when: docker_enabled | bool
+    - role: development/doctl
+      tags:
+        - doctl
+        - development:infrastructure
+      when: doctl_enabled | bool
     - role: dots
       tags:
         - dots
       when: dots_enabled | bool
+    - role: envchain
+      tags:
+        - envchain
+      when: envchain_enabled | bool
 #    - role: kubectl
 #      become: true
 #      tags:

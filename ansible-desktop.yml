@@ -1,5 +1,8 @@
 ---
 
+- name: Ubuntu Playbook Initialization
+  hosts: localhost
+
 - import_playbook: common.yml
   tags:
     - common
@@ -9,6 +12,3 @@
 - import_playbook: development.yml
   tags:
     - development
-
-- name: Ubuntu Desktop Playbook
-  hosts: localhost

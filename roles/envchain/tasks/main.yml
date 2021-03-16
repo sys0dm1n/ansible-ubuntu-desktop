@@ -1,0 +1,41 @@
+---
+
+- name: Install dependencies
+  become: true
+  apt: 
+    pkg: ["libsecret-1-dev"]
+    state: latest
+    update_cache: yes 
+    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Create directory structure 
+  file:
+    path: "{{ item }}"
+    mode: '0750'
+    state: directory
+  with_items:
+    - "~/.local/tmp"
+
+- name: Check if binary file exists
+  stat: 
+    path: '~/.local/bin/envchain'
+  register: envchain_binary
+
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/sorah/envchain'
+    dest: '~/.local/tmp/envchain'
+    version: master
+  when: not envchain_binary.stat.exists
+
+- name: Make and Install
+  shell: 
+    cmd: make && cp ./envchain ~/.local/bin/
+    chdir: ~/.local/tmp/envchain
+    creates: "~/.local/bin/envchain"
+  when: not envchain_binary.stat.exists
+
+- name: Clean up temp directory
+  file:
+    path: '~/.local/tmp/envchain'
+    state: absent
