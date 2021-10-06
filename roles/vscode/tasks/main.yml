@@ -1,0 +1,29 @@
+---
+
+- name: Install apt-transport-https
+  become: true
+  apt:
+    pkg: "apt-transport-https"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Add Apt signing key
+  become: true
+  ansible.builtin.apt_key:
+    url: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
+
+- name: Add repository into sources list
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    state: present
+
+- name: Install vscode
+  become: true
+  apt:
+    pkg: "code"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"

@@ -1,0 +1,9 @@
+---
+
+- name: Install Git
+  become: true
+  apt:
+    pkg: "git"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
