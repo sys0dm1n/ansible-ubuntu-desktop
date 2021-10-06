@@ -1,0 +1,9 @@
+---
+
+- name: Install Tkinter
+  become: true
+  apt:
+    pkg: "python3-tk"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"

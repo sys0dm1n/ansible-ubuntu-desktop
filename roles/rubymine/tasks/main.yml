@@ -1,0 +1,15 @@
+---
+
+- name: Install Ruby
+  become: true
+  apt:
+    pkg: "ruby-full"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Install rubymine
+  become: true
+  snap:
+    name: rubymine
+    classic: true

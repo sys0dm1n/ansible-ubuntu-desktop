@@ -1,0 +1,26 @@
+---
+- name: Check if Horizon View Client is already installed
+  stat:
+    path: /usr/bin/vmware-view
+  register: view_client_already_installed
+
+- name: Copy over Horizon View Client bundle installer
+  ansible.builtin.copy:
+    src: VMware-Horizon-Client-5.5.0-16946361.x64.bundle
+    dest: /tmp/VMware-Horizon-Client-5.5.0-16946361.x64.bundle
+    owner: root
+    group: root
+    mode: '0755'
+  when: view_client_already_installed.stat.exists == 0
+
+- name: Install Horizon View Client bundle
+  ansible.builtin.shell: env TERM=dumb VMWARE_EULAS_AGREED=yes ./VMware-Horizon-Client-5.5.0-16946361.x64.bundle --console --required
+  args:
+    chdir: /tmp/
+  when: view_client_already_installed.stat.exists == 0
+
+- name: Remove Horizon View Client bundle installer
+  ansible.builtin.file:
+    path: /tmp/VMware-Horizon-Client-5.5.0-16946361.x64.bundle
+    state: absent
+  when: view_client_already_installed.stat.exists == 0

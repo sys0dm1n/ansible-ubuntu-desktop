@@ -1,0 +1,13 @@
+---
+
+- name: Install ubuntu-make
+  become: true
+  apt:
+    pkg: "ubuntu-make"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Install PhpStorm
+  become: true
+  shell: "umake ide phpstorm"
