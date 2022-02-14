@@ -1,0 +1,26 @@
+---
+
+- name: Install requirements
+  apt: 
+    pkg: ["apt-transport-https", "ca-certificates", "curl", "software-properties-common"] 
+    state: latest 
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Installing apt-key
+  apt_key: 
+    id: "DBA36B5181D0C816F630E889D980A17457F6FB06"
+    url: https://updates.signal.org/desktop/apt/keys.asc
+    state: present
+
+- name: Add deb repository
+  apt_repository: 
+    repo: 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main'
+    state: present
+
+- name: Install
+  apt: 
+    pkg: ["signal-desktop"]
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

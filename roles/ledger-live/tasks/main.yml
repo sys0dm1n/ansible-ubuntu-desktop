@@ -1,0 +1,49 @@
+- name: Download Ledger Live {{ ledger_live_version }}
+  get_url:
+    url: "https://github.com/LedgerHQ/ledger-live-desktop/releases/download/v{{ ledger_live_version }}/ledger-live-desktop-{{ ledger_live_version }}-linux-x86_64.AppImage"
+    dest: "~/.local/bin/ledger-live-desktop-{{ ledger_live_version }}-linux-x86_64.AppImage"
+    checksum: sha512:{{ ledger_live_sha512 }}
+    mode: "0750"
+    headers:
+      Accept: "application/octet-stream"
+
+- name: Download udev rules setup script
+  get_url: 
+    url: "https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh"
+    dest: /tmp/add_udev_rules.sh
+
+- name: Ensure /tmp/add_udev_rules.sh file exists
+  stat: 
+    path: /tmp/add_udev_rules.sh
+  register: ledger_live_udev_rules
+
+- name: Setup udev rules
+  become: true
+  shell: 
+    cmd: bash /tmp/add_udev_rules.sh
+    creates: "/etc/udev/rules.d/20-hw1.rules"
+  when: ledger_live_udev_rules.stat.exists
+
+- name: Create user icons directory if it does not exist
+  ansible.builtin.file:
+    path: ~/.local/share/icons
+    state: directory
+    mode: '0750'
+
+- name: Copy Ledger Live Desktop icon
+  copy:
+    src: ledger-live-desktop.png
+    dest: ~/.local/share/icons/ledger-live-desktop.png
+
+- name: Add desktop shortcut for Ledger Live {{ ledger_live_version }}
+  copy:
+    dest: "~/.local/share/applications/ledger-live.desktop"
+    content: |
+      [Desktop Entry]
+      Encoding=UTF-8
+      Version={{ ledger_live_version }}
+      Type=Application
+      Terminal=false
+      Name=Ledger Live Desktop
+      Exec={{ ansible_env.HOME }}/.local/bin/ledger-live-desktop-{{ ledger_live_version }}-linux-x86_64.AppImage
+      Icon=ledger-live-desktop

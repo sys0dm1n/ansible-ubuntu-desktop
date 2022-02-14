@@ -1,0 +1,7 @@
+---
+
+- name: Install losslesscut
+  snap:
+    name:
+      - losslesscut
+    state: present

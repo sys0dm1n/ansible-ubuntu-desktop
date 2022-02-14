@@ -1,0 +1,35 @@
+- name: Get assets
+  get_url:
+    url: "https://api.github.com/repos/lawl/NoiseTorch/releases/latest"
+    force: yes
+    headers:
+      Accept: "application/vnd.github.v3+json"
+    dest: "/tmp/{{ noisetorch_assets_response }}"
+
+- name: Get download url
+  shell: |
+    cat "/tmp/{{ noisetorch_assets_response }}" | jq '.assets | .[] | select(.browser_download_url | contains("NoiseTorch_x64.tgz")) | .url' | sed -e 's/^"//' -e 's/"$//'
+  register: "download_url"
+
+- debug:
+    msg: "{{ download_url.stdout }}"
+
+- name: Download latest release
+  get_url:
+    url: "{{ download_url.stdout }}"
+    dest: /tmp/NoiseTorch_x64.tgz
+    tmp_dest: /tmp/
+    force: yes
+    headers:
+      Accept: "application/octet-stream"
+
+- name: Ensure file exists
+  stat: 
+    path: /tmp/NoiseTorch_x64.tgz
+  register: noisetorch_x64
+
+- name: Unarchive NoiseTorch
+  unarchive:
+    src: /tmp/NoiseTorch_x64.tgz
+    dest: "~"
+  when: noisetorch_x64.stat.exists

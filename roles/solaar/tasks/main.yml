@@ -1,0 +1,8 @@
+---
+
+- name: Install solaar
+  apt: 
+    pkg: ["solaar"]
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

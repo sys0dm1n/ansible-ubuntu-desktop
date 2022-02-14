@@ -1,0 +1,6 @@
+---
+
+- name: Install landscape
+  community.general.gem:
+    name: terraform_landscape
+    state: present

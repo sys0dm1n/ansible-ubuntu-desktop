@@ -1,0 +1,9 @@
+---
+
+- name: Install Default OpenJRE
+  become: true
+  apt: 
+    pkg: ["default-jre-headless"]
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

@@ -1,0 +1,5 @@
+collections:
+  - community.general
+
+dependencies:
+  - { role: ruby/rbenv }

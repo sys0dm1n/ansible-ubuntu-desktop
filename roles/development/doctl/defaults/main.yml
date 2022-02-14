@@ -1,0 +1,5 @@
+---
+
+doctl_enabled: no
+doctl_github_repo: "digitalocean/doctl"
+doctl_file_ending: "linux-amd64.tar.gz"

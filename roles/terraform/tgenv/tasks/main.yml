@@ -1,0 +1,29 @@
+---
+
+- name: Git checkout tgenv
+  git:
+    repo: 'https://github.com/cunymatthieu/tgenv'
+    dest: ~/.local/lib/tgenv
+    version: master
+  register: result
+
+- name: Install tgenv binary
+  file:
+    src: ~/.local/lib/tgenv/bin/{{ item }}
+    dest: ~/.local/bin/{{ item }}
+    state: link
+  loop:
+    - terragrunt
+    - tgenv
+  when: result is success and not ansible_check_mode
+  register: result
+
+- name: Install and setup terragrunt
+  shell: 
+    cmd: |
+      tgenv install 0.28.7
+      tgenv use 0.28.7
+#      grep -q ".local/lib/tfenv/versions/0.14.7/terraform" ~/.bashrc ~/.zshrc && true || terraform -install-autocomplete
+    chdir: ~
+    creates: "~/.local/lib/tgenv/versions/0.28.7/terragrunt"
+  when: not ansible_check_mode

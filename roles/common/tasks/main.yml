@@ -24,6 +24,7 @@
     cache_valid_time: "{{ aptcachetime }}"
 
 - name: Install common packages
+  become: true
   apt: 
     pkg: "{{ common.packages}}"
     state: latest
@@ -37,5 +38,6 @@
     enabled: yes
 
 - name: Upgrade installed packages
+  become: true
   apt: 
     upgrade: "yes"

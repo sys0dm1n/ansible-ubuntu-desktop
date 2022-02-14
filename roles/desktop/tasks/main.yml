@@ -3,7 +3,7 @@
 - name: Install common desktop packages
   become: true
   apt: 
-    pkg: "{{ desktop.common_packages }}"
+    pkg: "{{ desktop.packages }}"
     state: latest
     update_cache: yes 
     cache_valid_time: "{{ aptcachetime }}"

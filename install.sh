@@ -15,6 +15,8 @@ else
     echo "Ansible already installed"
 fi
 
+ansible-galaxy collection install community.general
+
 #####################################
 # Display real installation process #
 echo ""

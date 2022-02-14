@@ -1,0 +1,7 @@
+---
+
+- name: Install winbox
+  snap:
+    name:
+      - winbox
+    state: present

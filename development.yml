@@ -1,0 +1,169 @@
+---
+
+- name: Ubuntu Development Playbook
+  hosts: localhost
+  roles:
+    - role: 'aws/cli'
+      tags:
+        - aws
+        - aws:cli
+        - development:cli
+      when: aws_enabled or awscli_enabled | bool
+    - role: 'aws/ebcli'
+      tags:
+        - aws
+        - aws:ebcli
+        - development:cli
+      when: aws_enabled or awsebcli_enabled | bool
+    - role: 'aws/ecscli'
+      become: true
+      tags:
+        - aws
+        - aws:ecscli
+        - development:cli
+      when: aws_enabled or awsecscli_enabled | bool
+    - role: dbeaver
+      become: true
+      tags:
+        - dbeaver
+        - development:database
+      when: dbeaver_enabled | bool
+    - role: docker
+      become: true
+      tags:
+        - docker
+        - development:infrastructure
+      when: docker_enabled | bool
+    - role: development/doctl
+      tags:
+        - doctl
+        - development:infrastructure
+      when: doctl_enabled | bool
+    - role: dots
+      tags:
+        - dots
+      when: dots_enabled | bool
+    - role: envchain
+      tags:
+        - envchain
+      when: envchain_enabled | bool
+#    - role: kubectl
+#      become: true
+#      tags:
+#        - kubectl
+#        - development
+#        - development:cli
+#        - developer
+#      when: kubectl_enabled | bool
+#    - role: minikube
+#      become: true
+#      tags:
+#        - minikube
+#        - development
+#        - development:infrastructure
+#        - developer
+#      when: minikube_enabled | bool
+    - role: golang/language
+      tags:
+        - go
+        - development:programing
+      when: golang_enabled | bool
+    - role: golang/assh
+      tags:
+        - go
+        - go:assh
+        - development:programing
+      when: go_assh_enabled | bool
+    - role: java/openjdk
+      tags:
+        - java
+        - java:openjdk
+        - development:programing
+      when: java_openjdk_enabled | bool
+    - role: java/openjre
+      tags:
+        - java
+        - java:openjre
+        - development:programing
+      when: java_openjre_enabled | bool
+    - role: lens
+      become: true
+      tags:
+        - lens
+        - development:editor
+      when: lens_enabled | bool
+    - role: python
+      tags:
+        - python
+        - development:programing
+      when: python_enabled | bool
+    - role: mysql-workbench
+      become: true
+      tags:
+        - mysql-workbench
+        - development:database
+      when: mysql_workbench_enabled | bool
+    - role: ruby/rbenv
+      tags:
+        - ruby
+        - ruby:rbenv
+        - development:programing
+      when: ruby_enabled | bool
+    - role: ssh
+      become: true
+      tags:
+        - ssh
+      when: ssh_enabled | bool
+    - role: ruby/landscape
+      tags:
+        - ruby
+        - ruby:landscape
+        - development:programing
+      when: ruby_landscape_enabled | bool
+    - role: terraform/tfenv
+      tags:
+        - terraform
+        - tfenv
+        - development:infrastructure
+      when: tfenv_enabled | bool
+    - role: terraform/tgenv
+      tags:
+        - terragrunt
+        - tgenv
+        - development:infrastructure
+      when: tgenv_enabled | bool
+    - role: tmux
+      become: true
+      tags:
+        - tmux
+      when: tmux_enabled | bool
+    - role: vagrant
+      become: true
+      tags:
+        - vagrant
+        - development:infrastructure
+      when: vagrant_enabled | bool
+    - role: virtualbox
+      become: true
+      tags:
+        - virtualbox
+        - development:infrastructure
+      when: virtualbox_enabled | bool
+    - role: virtmanager
+      become: true
+      tags:
+        - virtmanager
+        - development:infrastructure
+      when: virtmanager_enabled | bool
+    - role: zsh
+      tags:
+        - zsh
+      when: zsh_enabled | bool
+#    - role: vokoscreen
+#      become: true
+#      tags:
+#        - desktop
+#        - vokoscreen
+#        - devops
+#        - devs
+#      when: vokoscreen_enabled | bool

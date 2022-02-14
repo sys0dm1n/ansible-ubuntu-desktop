@@ -1,0 +1,9 @@
+---
+
+- name: Install Default OpenJDK
+  become: true
+  apt: 
+    pkg: ["default-jdk"]
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

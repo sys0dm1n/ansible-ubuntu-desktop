@@ -1,0 +1,13 @@
+---
+
+- name: Configure the Gnome EncFS Manager PPA
+  apt_repository:
+    repo: "ppa:gencfsm"
+    state: present
+
+- name: Install Gnome EncFS Manager
+  apt: 
+    pkg: ["gnome-encfs-manager"]
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

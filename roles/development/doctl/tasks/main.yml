@@ -1,0 +1,43 @@
+- name: Create directory structure 
+  file:
+    path: "{{ item }}"
+    mode: '0750'
+    state: directory
+  with_items:
+    - "~/.local/tmp"
+
+- name: Get assets
+  get_url:
+    url: "https://api.github.com/repos/{{ doctl_github_repo }}/releases/latest"
+    force: yes
+    headers:
+      Accept: "application/vnd.github.v3+json"
+    dest: "~/.local/tmp/{{ doctl_github_repo | replace('/', '-') }}.json"
+
+- name: Get download url
+  shell: |
+    cat "{{ ansible_env.HOME }}/.local/tmp/{{ doctl_github_repo | replace('/', '-') }}.json" | jq '.assets | .[] | select(.browser_download_url | contains("linux-amd64.tar.gz")) | .url' | sed -e 's/^"//' -e 's/"$//'
+  register: "download_url"
+
+- debug:
+    msg: "{{ download_url.stdout }}"
+
+- name: Download latest release
+  get_url:
+    url: "{{ download_url.stdout }}"
+    dest: "~/.local/tmp/{{ doctl_github_repo | replace('/', '-') }}-latest-{{ doctl_file_ending }}"
+    tmp_dest: ~/.local/tmp/
+    force: yes
+    headers:
+      Accept: "application/octet-stream"
+
+- name: Ensure file exists
+  stat: 
+    path: "~/.local/tmp/{{ doctl_github_repo | replace('/', '-') }}-latest-{{ doctl_file_ending }}"
+  register: doctl_binary
+
+- name: Unarchive
+  unarchive:
+    src: "~/.local/tmp/{{ doctl_github_repo | replace('/', '-') }}-latest-{{ doctl_file_ending }}"
+    dest: "~/.local/bin"
+  when: doctl_binary.stat.exists

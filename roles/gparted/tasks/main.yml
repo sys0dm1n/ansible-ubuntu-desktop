@@ -1,0 +1,8 @@
+---
+
+- name: Install gparted
+  apt: 
+    pkg: gparted
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

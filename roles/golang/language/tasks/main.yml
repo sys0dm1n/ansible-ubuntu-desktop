@@ -1,0 +1,9 @@
+---
+
+- name: Install golang packages
+  become: true
+  apt: 
+    pkg: ["goalng"]
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
