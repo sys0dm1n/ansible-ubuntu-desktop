@@ -1,12 +1,12 @@
 ---
 
-- name: Add Nexcloud PPA repository
-  apt_repository: 
+- name: Add Nextcloud PPA repository
+  apt_repository:
     repo: ppa:nextcloud-devs/client
     state: present
 
-- name: Install Nexcloud Desktop Sync App
-  apt: 
+- name: Install Nextcloud Desktop Sync App
+  apt:
     pkg: ["nextcloud-desktop", "nautilus-nextcloud"]
     state: present
     update_cache: yes
