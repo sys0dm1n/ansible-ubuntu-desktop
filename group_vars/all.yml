@@ -25,13 +25,15 @@ firefox_enabled:              no
 gimp_enabled:                 no
 gitg_enabled:                 no
 gnome_encfs_manager_enabled:  no
-gsettings-ooo_enabled:        yes
+gsettings_enabled:            yes
 gparted_enabled:              no
 go_enabled:                   no
+golang_enabled:               no
 go_assh_enabled:              no
 guake_enabled:                no
 handbrake_enabled:            no
 indicator_sysmonitor_enabled: no
+java_openjre_enabled:         no
 java_openjdk_enabled:         no
 kazan_enabled:                no
 kubectl_enabled:              no
