@@ -25,6 +25,7 @@ firefox_enabled:              no
 gimp_enabled:                 no
 gitg_enabled:                 no
 gnome_encfs_manager_enabled:  no
+gsettings-ooo_enabled:        yes
 gparted_enabled:              no
 go_enabled:                   no
 go_assh_enabled:              no

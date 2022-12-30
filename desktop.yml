@@ -65,6 +65,11 @@
       tags:
         - gparted
       when: gparted_enabled | bool
+    - role: gsettings-ooo
+      become: true
+      tags:
+        - gparted
+      when: gsettings-ooo_enabled | bool
     - role: guake
       become: true
       tags:

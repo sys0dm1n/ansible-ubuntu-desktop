@@ -1,0 +1,1 @@
+ansible-playbook playbook.yml -u ooo -i inventory.txt --extra-vars "ansible_sudo_pass=xxxxxxxxxx" -v

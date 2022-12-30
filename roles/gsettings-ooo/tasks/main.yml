@@ -1,0 +1,362 @@
+---
+
+# Module:    community.general.dconf
+# Database:  ~/.config/dconf/user
+# dconf - Simple tool for manipulating a dconf database
+
+# Commands to finde database entries
+# gsettings list-schemas
+# gsettings list-schemas | grep -i shotwell
+#
+# gsettings list-recursively | grep org.gnome.desktop.session.idle-delay
+# gsettings list-recursively | grep -i lock
+
+# ??? - .xprofile alternative - exec nm-applet &
+#  - name: Show nm-applet
+#    community.general.dconf:
+#      key: '/org/gnome/nm-applet/show-applet'
+#      value: 'true'
+
+
+# clock
+  - name: clock format 24h
+    community.general.dconf:
+      key: '/org/gnome/desktop/interface/clock-format'
+      value: "'24h'"
+
+  - name: clock - show date
+    community.general.dconf:
+      key: '/org/gnome/desktop/interface/clock-show-date'
+      value: 'false'
+
+  - name: clock - show seconds - 00:00:00
+    community.general.dconf:
+      key: '/org/gnome/desktop/interface/clock-show-seconds'
+      value: 'false'
+
+  - name: clock - show weekday
+    community.general.dconf:
+      key: '/org/gnome/desktop/interface/clock-show-weekday'
+      value: 'true'
+
+  - name: Automatic timezone
+    community.general.dconf:
+      key: '/org/gnome/desktop/datetime/automatic-timezone'
+      value: 'true'
+
+# did not work
+#  - name: Clock override format
+#    community.general.dconf:
+#      key: '/org/gnome/shell/extensions/clock_override/override-string'
+#      value: "'%a %e. %b %H:%M'"
+
+# language + keyboard
+  - name: keyboard layout
+    community.general.dconf:
+      key: '/org/gnome/desktop/input-sources/sources'
+      value: "[('xkb', 'de'), ('xkb', 'de')]"
+
+  - name: Activate numlock
+    community.general.dconf:
+      key: '/org/gnome/desktop/peripherals/keyboard/numlock-state'
+      value: 'false'
+
+  - name: dynamic workspace ???
+    community.general.dconf:
+      key: '/org/gnome/mutter/dynamic-workspaces'
+      value: 'false'
+
+  - name: Disable numlock
+    community.general.dconf:
+      key: '/org/gnome/settings-daemon/peripherals/keyboard/numlock-state'
+      value: "'off'"
+
+  - name: Enable night-light
+    community.general.dconf:
+      key: '/org/gnome/settings-daemon/plugins/color/night-light-enabled'
+      value: 'true'
+
+  - name: Enable night-light automatic shedule
+    community.general.dconf:
+      key: '/org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic'
+      value: 'true'
+
+  - name: Set night-light temperature
+    community.general.dconf:
+      key: '/org/gnome/settings-daemon/plugins/color/night-light-temperature'
+      value: 'uint32 2700'
+
+  - name: Disable screen dim
+    community.general.dconf:
+      key: '/org/gnome/settings-daemon/plugins/power/idle-dim'
+      value: 'false'
+
+  - name: Disable automatic sleep
+    community.general.dconf:
+      key: '/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type'
+      value: "'nothing'"
+
+### Settings > Privacy
+
+# org.gnome.desktop.privacy disable-camera false
+# org.gnome.desktop.privacy disable-microphone false
+# org.gnome.desktop.privacy disable-sound-output false
+# org.gnome.desktop.privacy hide-identity false
+# org.gnome.desktop.privacy old-files-age uint32 30 ---
+# org.gnome.desktop.privacy privacy-screen false
+# org.gnome.desktop.privacy recent-files-max-age -1 ---
+# org.gnome.desktop.privacy remember-app-usage true
+# org.gnome.desktop.privacy remember-recent-files true ---
+# org.gnome.desktop.privacy remove-old-temp-files false ---
+# org.gnome.desktop.privacy remove-old-trash-files false ---
+# org.gnome.desktop.privacy report-technical-problems true
+# org.gnome.desktop.privacy send-software-usage-stats false
+# org.gnome.desktop.privacy show-full-name-in-top-bar true
+# org.gnome.desktop.privacy usb-protection true
+# org.gnome.desktop.privacy usb-protection-level 'lockscreen'
+#
+# org.gnome.system.location enabled true ---
+# org.gnome.system.location max-accuracy-level 'city' ---
+
+
+### Settings > Privacy > 0 Hidden Settings
+
+  - name: Hide Identity - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/hide-identity'
+      value: "false"
+      # If set to true, the system will make an effort to not
+      # divulge the user’s identity on screen or on the network.
+
+  - name: Show full name in the user menu - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/hide-identity'
+      value: "false"
+      # Whether the users full name is shown in the user menu or not.
+
+  - name: Monitoring of Application usage - false
+    community.general.dconf:
+       key: '/org/gnome/desktop/privacy/remember-app-usage'
+       value: "true"
+
+  - name: If TRUE, applications should not use the microphone. - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/disable-microphone'
+      value: "false"
+
+  - name: If TRUE, applications should not use the camera. - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/disable-sound-output'
+      value: "false"
+
+  - name: Protect USB devices - true
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/usb-protection'
+      value: "true"
+      # If the USBGuard service is present and this setting is
+      # enabled, USB devices will be protected as configured in the
+      # usb-protection-level setting.
+
+  - name: Protect USB devices - 'lockscreen'
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/usb-protection-level'
+      value: "'lockscreen'"
+      # 'lockscreen' vs 'always'
+      # If set to “lockscreen”, only when the lock screen is present
+      # new USB devices will be rejected;
+      # if set to “always”, all new USB devices will always be rejected.
+
+  - name: ??? Privacy Screen - What Laptops support this?
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/disable-sound-output'
+      value: "false"
+      # If the underlying hardware has privacy screen support and
+      # this setting is enabled, the panels supporting this technology
+      # will be obscured from lateral view.
+      #
+      # Auf einigen Laptops wie Thinkpads lässt sich der Blickwinkel
+      # des Displays per Knopfdruck verkleinern.
+
+
+### Settings > Privacy > 2 Location Services
+#
+#
+# Connectivity Check ????
+
+
+
+
+### Settings > Privacy > 2 Location Services
+
+  - name: Location Services - false
+    community.general.dconf:
+      key: '/org/gnome/system/location/enabled'
+      value: "false"
+
+  - name: Location Services Accuracy - exact
+    community.general.dconf:
+      key: '/org/gnome/system/location/max-accuracy-level'
+      value: "'exact'"
+      # Configures the maximum level of location accuracy applications are
+      # allowed to see. Valid options are “country”, “city”, “neighborhood”,
+      # “street”, and “exact” (typically requires GPS receiver). Please keep in
+      # mind that this only controls what GeoClue will allow applications to see
+      # and they can find user’s location on their own using network resources
+      # (albeit with street-level accuracy at best).
+      # https://github.com/GNOME/gsettings-desktop-schemas/blob/master/schemas/org.gnome.system.location.gschema.xml.in
+
+
+### Settings > Privacy > 3 Thunderbold
+#
+#
+#
+
+### Settings > Privacy > 4 File History and Trash
+
+  - name: 1 File History - true
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/remember-recent-files'
+      value: "true"
+
+  - name: 2 File History Duration - Forever
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/recent-files-max-age'
+      value: "-1"
+      # -1 = forever, 1 = 1 day, 7 = 7 days, 30 = 30 days
+
+  - name: 3 Automatically Delete Trash Content - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/remove-old-trash-files'
+      value: "false"
+
+  - name: 4 Automatically Delete Temporary Files - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/remove-old-temp-files'
+      value: "false"
+
+  - name: 5 Automatically Delete Period - 30 days
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/old-files-age'
+      value: "uint32 30"
+      # hour: 1 = "0"
+      # days: 1 = "1"  ...2,3,4,5,6,7,14,30days
+
+
+### Settings > Privacy > Screen
+
+  - name: Screen > 1 Blank Screen Delay - 12 hours
+    community.general.dconf:
+      key: '/org/gnome/desktop/session/idle-delay'
+      value: 'uint32 43200'
+
+  - name: Screen > 2 Automatic Screen Lock - false = off
+    community.general.dconf:
+      key: '/org/gnome/desktop/screensaver/lock-enabled'
+      value: 'false'
+
+  - name: Screen > 3 Automatic Screen Lock Delay - 0,30,60,120,180,300,1800,3200
+    community.general.dconf:
+      key: '/org/gnome/desktop/screensaver/lock-delay'
+      value: 'uint32 3200'
+
+  - name: Screen > 4 Lock Screen on Suspend - false = off
+    community.general.dconf:
+      key: '/org/gnome/desktop/screensaver/ubuntu-lock-on-suspend'
+      value: "false"
+
+  - name: Screen > 5 Show Notifications on Lock Screen - false = off
+    community.general.dconf:
+      key: '/org/gnome/desktop/notifications/show-in-lock-screen'
+      value: 'false'
+
+
+### Settings > Privacy > Diagnostics
+
+  - name: Send statistics when applications are removed or installed - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/send-software-usage-stats'
+      value: 'false'
+
+  - name: Send reports of technical problems to the vendor - false
+    community.general.dconf:
+      key: '/org/gnome/desktop/privacy/report-technical-problems'
+      value: 'false'
+# ??? # How to switch between GUI-States Never,Automatic,Manuell ?
+
+
+
+
+
+
+# gsettings list-recursively | grep -i shell.favorite
+  - name: Read favorite apps
+    community.general.dconf:
+      key: "/org/gnome/shell/favorite-apps"
+      state: read
+#    register: favorites
+
+# gsettings list-recursively | grep -i shell.favorite
+  - name: Set favorite apps iff not set
+    community.general.dconf:
+      key: '/org/gnome/shell/favorite-apps'
+      value: "['org.gnome.Terminal.desktop', 'firefox_firefox.desktop', 'thunderbird.desktop', 'org.gnome.Nautilus.desktop']"
+#    when: not favorites.value
+
+
+  - name: finder - Set filechooser sort
+    community.general.dconf:
+      key: '/org/gtk/settings/file-chooser/sort-column'
+      value: "'modified'"
+
+  - name: Disable system sounds
+    community.general.dconf:
+      key: '/org/gnome/desktop/sound/event-sounds'
+      value: 'false'
+
+  - name: Calculator keyboard mode as default
+    community.general.dconf:
+      key: '/org/gnome/calculator/button-mode'
+      value: "'keyboard'"
+
+  - name: Terminal disable F10
+    community.general.dconf:
+      key: '/org/gnome/terminal/legacy/menu-accelerator-enabled'
+      value: 'false'
+
+  - name: Terminal hide menubar
+    community.general.dconf:
+      key: '/org/gnome/terminal/legacy/default-show-menubar'
+      value: 'false'
+
+  - name: Terminal hide scrollbar
+    community.general.dconf:
+      key: '/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollbar-policy'
+      value: "'never'"
+
+  - name: Set terminal font to firacode
+    community.general.dconf:
+      key: '/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font'
+      value: "'Fira Code weight=453 12'"
+
+  - name: Set terminal font to firacode
+    community.general.dconf:
+      key: '/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font'
+      value: 'false'
+
+  - name: Set terminal color palette to Solarized
+    community.general.dconf:
+      key: '/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/palette'
+      value: "['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
+
+
+# https://github.com/GNOME/gsettings-desktop-schemas
+
+# community.general.dconf module – Modify and read dconf database
+# best link - look under notes
+# https://docs.ansible.com/ansible/latest/collections/community/general/dconf_module.html
+
+# inspiration found here
+# https://github.com/InternetGuru/ansible/blob/master/tasks/ubuntucfg.yml
+
+# official
+# https://github.com/ansible-collections/community.general/blobb531ecdc9bfe48fe98ea6b67279eb048e0c9071d/plugins/modules/dconf.py
