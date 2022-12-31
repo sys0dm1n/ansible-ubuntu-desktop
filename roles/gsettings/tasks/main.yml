@@ -1,24 +1,28 @@
 ---
 
-# Module:    community.general.dconf
-# Database:  ~/.config/dconf/user
-# dconf - Simple tool for manipulating a dconf database
+# REQUIRMENTS
 
-# Commands to finde database entries
-# gsettings list-schemas
-# gsettings list-schemas | grep -i shotwell
-#
-# gsettings list-recursively | grep org.gnome.desktop.session.idle-delay
-# gsettings list-recursively | grep -i lock
+# Install psutil
+  - name: Install psutil
+    ansible.builtin.pip:
+      name: psutil
 
-# ??? - .xprofile alternative - exec nm-applet &
-#  - name: Show nm-applet
-#    community.general.dconf:
-#      key: '/org/gnome/nm-applet/show-applet'
-#      value: 'true'
+
+# TASKS
+
+# Settings > Appearance 
+
+  - name: dock positon
+    become_user: "{{ ansible_env.USER }}"
+    community.general.dconf:
+      key: '/org/gnome/shell/extensions/dash-to-dock/dock-position'
+      value: "'LEFT'"
+    tags:
+      - gsettings-appearance
 
 
 # clock
+
   - name: clock format 24h
     community.general.dconf:
       key: '/org/gnome/desktop/interface/clock-format'
@@ -96,7 +100,7 @@
       key: '/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type'
       value: "'nothing'"
 
-### Settings > Privacy
+# Settings > Privacy
 
 # org.gnome.desktop.privacy disable-camera false
 # org.gnome.desktop.privacy disable-microphone false
@@ -119,7 +123,7 @@
 # org.gnome.system.location max-accuracy-level 'city' ---
 
 
-### Settings > Privacy > 0 Hidden Settings
+# Settings > Privacy > 0 Hidden Settings
 
   - name: Hide Identity - false
     community.general.dconf:
@@ -288,11 +292,10 @@
 
 
 
-# gsettings list-recursively | grep -i shell.favorite
-  - name: Read favorite apps
-    community.general.dconf:
-      key: "/org/gnome/shell/favorite-apps"
-      state: read
+#  - name: Read favorite apps
+#    community.general.dconf:
+#      key: "/org/gnome/shell/favorite-apps"
+#      state: read
 #    register: favorites
 
 # gsettings list-recursively | grep -i shell.favorite
@@ -349,6 +352,86 @@
       value: "['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
 
 
+
+
+# Settings > Appearance
+
+  - name: Accent Color - Orange = Yura  
+    become_user: "{{ ansible_env.USER }}"
+    community.general.dconf:
+      key: "/org/gnome/desktop/interface/gtk-theme"
+      value: "'Yaru'"
+      # value: "'Yaru-blue'" # blue
+      # value: "'Yaru-red'"  # red
+      # value: "'Yaru-'"     # orange
+    tags:
+      - gsettings-appearance
+
+  - name: wallpaper - picture-ur (1) 
+    become_user: "{{ ansible_env.USER }}"
+    community.general.dconf:
+      key: "/org/gnome/desktop/background/picture-uri"
+      value: "''"
+    tags:
+      - gsettings-appearance
+
+  - name: wallpaper - picture-uri-dark (2) 
+    become_user: "{{ ansible_env.USER }}"
+    community.general.dconf:
+      key: "/org/gnome/desktop/background/picture-uri-dark"
+      value: "''"
+    tags:
+      - gsettings-appearance
+
+  - name: set wallpaper position
+    become_user: "{{ ansible_env.USER }}"
+    community.general.dconf:
+      key: "/org/gnome/desktop/background/picture-options"
+      value: "'zoom'"
+    tags:
+      - gsettings-appearance
+
+# IMPORTANT: 
+# Run the Play "primary color" and secondary color" last, 
+# to get rid of the red background.
+
+  - name: primary color (1)  
+    become_user: "{{ ansible_env.USER }}"
+    community.general.dconf:
+      key: "/org/gnome/desktop/background/primary-color"
+      value: "'#545554'"
+    tags:
+      - gsettings-appearance
+
+  - name: secondary color (2) 
+    become_user: "{{ ansible_env.USER }}"
+    community.general.dconf:
+      key: "/org/gnome/desktop/background/secondary-color"
+      value: "'#545554'"
+    tags:
+      - gsettings-appearance
+
+# END ###################################################
+
+  
+# NOTES
+
+# Module:    community.general.dconf
+# Database:  ~/.config/dconf/user
+# dconf - Simple tool for manipulating a dconf database
+
+# Commands to finde database entries
+# gsettings list-schemas
+# gsettings list-schemas | grep -i shotwell
+#
+# gsettings list-recursively | grep org.gnome.desktop.session.idle-delay
+# gsettings list-recursively | grep -i lock
+
+# ??? - .xprofile alternative - exec nm-applet &
+#  - name: Show nm-applet
+#    community.general.dconf:
+#      key: '/org/gnome/nm-applet/show-applet'
+#      value: 'true'
 # https://github.com/GNOME/gsettings-desktop-schemas
 
 # community.general.dconf module – Modify and read dconf database

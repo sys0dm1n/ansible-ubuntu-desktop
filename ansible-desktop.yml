@@ -2,13 +2,19 @@
 
 - name: Ubuntu Playbook Initialization
   hosts: localhost
+    
+- import_playbook: red.yml
+  tags:
+    - red
 
 - import_playbook: common.yml
   tags:
     - common
-- import_playbook: desktop.yml
-  tags:
-    - desktop
+
 - import_playbook: development.yml
   tags:
     - development
+
+- import_playbook: desktop.yml
+  tags:
+    - desktop

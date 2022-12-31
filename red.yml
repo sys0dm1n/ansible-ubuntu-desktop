@@ -1,0 +1,21 @@
+---
+
+- name: Red 
+  hosts: localhost
+  tasks:
+     - name: Temporary change the Background-Color to red, ...
+       become_user: "{{ ansible_env.USER }}"
+       community.general.dconf:
+         key: "/org/gnome/desktop/background/primary-color"
+         value: "'#FFC300'"
+       tags:
+         - gsettings-appearance
+
+     - name: ... to indicate a running Ansible Playbook 
+       become_user: "{{ ansible_env.USER }}"
+       community.general.dconf:
+         key: "/org/gnome/desktop/background/secondary-color"
+         value: "'#FFC300'"
+       tags:
+         - gsettings-appearance
+

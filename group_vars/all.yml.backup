@@ -25,7 +25,7 @@ firefox_enabled:              no  # ok
 gimp_enabled:                 yes # ok 
 gitg_enabled:                 yes  # ok
 gnome_encfs_manager_enabled:  yes  # ok
-gsettings_enabled:            yes  # ok
+gsettings_enabled:            no  # ok
 gparted_enabled:              yes  # ok
 go_enabled:                   no
 golang_enabled:               no
