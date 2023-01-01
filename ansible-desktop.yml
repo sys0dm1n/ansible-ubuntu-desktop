@@ -3,7 +3,7 @@
 - name: Ubuntu Playbook Initialization
   hosts: localhost
     
-- import_playbook: red.yml
+- import_playbook: yellow.yml
   tags:
     - red
 

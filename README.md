@@ -1,13 +1,16 @@
-# Ansible Ubuntu setup
-Ansible roles to setup Ubuntu desktop. This playbook is focused on quickly deploying a "ready to use" Ubuntu Desktop.
-
+#  Ansible Ubuntu setup
+- Ansible roles to setup Ubuntu desktop. 
+- This playbook is focused on quickly deploying a "ready to use" Ubuntu Desktop.
 
 ## Requirements
 - Git
 - Ansible 2+ (automatically installed from [Ansible offical PPA](https://launchpad.net/~ansible/+archive/ubuntu/ansible) with the provided install.sh script)
 
+---
 
 ## Installation
+
+### 1. Install Git and Ansible
 First, you need to install Git and Ansible :
 ```
 $ sudo apt-get install git
@@ -16,14 +19,21 @@ $ cd ansible-ubuntu-desktop
 $ bash ./install.sh
 ```
 
+### 2. Create group_vars/local.yml
 Then you need to copy the `group_vars/all.yml` to `group_vars/local.yml` and customize which roles suit your needs. All roles except `locales`,`common`, and `desktop` are disabled by default.
 
-Run `ansible-playbook ansible-desktop.yml --ask-become-pass` and enter your sudo password to run the playbook
+### 3. Run the Playbook "ansible-desktop.yml"
+Run `ansible-playbook ansible-desktop.yml --ask-become-pass` 
 
+### 4. Enter the Sudo-Password
+xxxxxx
+
+### 5. Optional: User Tags
 Optionaly you can run just some of the tags like:
 `ansible-playbook ansible-desktop.yml --ask-become-pass --tags=common,locales`
 
 Tags are named the same as role dirs. If a role is in a sub dir then the tag for that specific role is sepparated with a colon like: `aws:cli`. But you can also use `aws` and that should install all the roles under the `aws` dir.
+
 
 ## Roles included
 
