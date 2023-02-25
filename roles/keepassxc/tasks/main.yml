@@ -1,0 +1,9 @@
+---
+
+- name: Install KeePassXc
+  become: true
+  apt: 
+    pkg: "keepassxc"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

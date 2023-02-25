@@ -1,0 +1,8 @@
+---
+
+- name: Download Talend TOS BD
+  unarchive: 
+    src: https://deac-ams.dl.sourceforge.net/project/talend-bigdata/Talend%20Open%20Studio%20for%20Big%20Data/8.0.1/TOS_BD-20211109_1610-V8.0.1.zip
+    dest: /opt
+    creates: /opt/talend-bigdata
+    remote_src: yes

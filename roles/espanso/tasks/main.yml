@@ -1,0 +1,15 @@
+---
+
+# - name: Check if espanso is installed
+#   command: dpkg-query -W espanso
+#   register: libgoocanvas_check_deb
+#   failed_when: libgoocanvas_check_deb.rc > 1
+#   changed_when: libgoocanvas_check_deb.rc == 1
+
+- name: Download espanso
+  get_url: url="https://github.com/federico-terzi/espanso/releases/download/v2.1.8/espanso-debian-x11-amd64.deb" dest="/tmp/espanso-debian-x11-amd64.deb"
+  # when: libgoocanvas_check_deb.rc == 1
+
+- name: Install espanso
+  apt: deb="/tmp/espanso-debian-x11-amd64.deb"
+  # when: libgoocanvas_check_deb.rc == 1

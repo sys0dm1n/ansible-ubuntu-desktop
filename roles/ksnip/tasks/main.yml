@@ -1,0 +1,29 @@
+---
+
+- name: Install apt-transport-https
+  become: true
+  apt:
+    pkg: "apt-transport-https"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
+
+- name: Add Apt signing key
+  become: true
+  ansible.builtin.apt_key:
+    url: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xa09776a495c8273be0d525fa6da81f13824cf812"
+    state: present
+
+- name: Add repository into sources list
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb https://ppa.launchpadcontent.net/nemonein/ksnip/ubuntu focal main
+    state: present
+
+- name: Install vscode
+  become: true
+  apt:
+    pkg: "ksnip"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ aptcachetime }}"
