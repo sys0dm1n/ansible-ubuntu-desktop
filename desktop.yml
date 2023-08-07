@@ -99,11 +99,11 @@
       tags:
         - nautilus-plugins
       when: nautilus_plugins_enabled | bool
-    - role: nextcloud
-      become: true
-      tags:
-        - nextcloud
-      when: nextcloud_enabled | bool
+    #- role: nextcloud
+    #  become: true
+    #  tags:
+    #    - nextcloud
+    #  when: nextcloud_enabled | bool
     - role: noisetorch
       tags:
         - noisetorch
@@ -149,11 +149,11 @@
       tags:
         - solaar
       when: solaar_enabled | bool
-    - role: sublime3
-      become: true
-      tags:
-        - sublime3
-      when: sublime3_enabled | bool
+    #- role: sublime3
+    #  become: true
+    #  tags:
+    #    - sublime3
+    #  when: sublime3_enabled | bool
     - role: slack
       tags:
         - slack
@@ -168,11 +168,11 @@
       tags:
         - syncthing
       when: syncthing_enabled | bool
-    - role: teamviewer
-      become: true
-      tags:
-        - teamviewer
-      when: teamviewer_enabled | bool
+    #- role: teamviewer
+    #  become: true
+    #  tags:
+    #    - teamviewer
+    #  when: teamviewer_enabled | bool
     - role: thunderbird
       become: true
       tags:
