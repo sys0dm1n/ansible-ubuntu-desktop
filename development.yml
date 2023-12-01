@@ -155,6 +155,12 @@
         - virtmanager
         - development:infrastructure
       when: virtmanager_enabled | bool
+    - role: vscode
+      become: true
+      tags:
+        - vscode
+        - development:programing
+      when: vscode_enabled | bool
     - role: zsh
       tags:
         - zsh
