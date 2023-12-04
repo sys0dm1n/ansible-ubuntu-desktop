@@ -30,11 +30,21 @@
       tags:
         - chromium
       when: chromium_enabled | bool
+    - role: chrome
+      become: true
+      tags:
+        - chrome
+      when: chrome_enabled | bool
     - role: discord
       become: true
       tags:
         - discord
       when: discord_enabled | bool
+    - role: doublecmd
+      become: true
+      tags:
+        - doublecmd
+      when: doublecmd_enabled | bool
     - role: filezilla
       become: true
       tags:
