@@ -12,6 +12,7 @@ awsebcli_enabled:             no
 awsecscli_enabled:            no
 barrier_enabled:              no
 bitwarden_enabled:            no
+chrome_enabled:               no
 chromium_enabled:             no
 common_git_enabled:           no
 dbeaver_enabled:              no
@@ -19,6 +20,7 @@ discord_enabled:              no
 doctl_enabled:                no
 docker_enabled:               no
 dots_enabled:                 no
+doublecmd_enabled:            no
 envchain_enabled:             no
 filezilla_enabled:            no
 firefox_enabled:              no
@@ -28,10 +30,12 @@ gnome_encfs_manager_enabled:  no
 gparted_enabled:              no
 go_enabled:                   no
 go_assh_enabled:              no
+golang_enabled:               no
 guake_enabled:                no
 handbrake_enabled:            no
 indicator_sysmonitor_enabled: no
 java_openjdk_enabled:         no
+java_openjre_enabled:         no
 kazan_enabled:                no
 kubectl_enabled:              no
 lens_enabled:                 no
@@ -73,6 +77,7 @@ ufw_enabled:                  no
 vagrant_enabled:              no
 virtualbox_enabled:           no
 virtmanager_enabled:          no
+vscode_enabled:               no
 vscodium_enabled:             no
 winbox_enabled:               no
 zsh_enabled:                  no
