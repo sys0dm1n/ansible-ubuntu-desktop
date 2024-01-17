@@ -1,12 +1,12 @@
 ---
 
-- name: Install apt-transport-https
-  become: true
-  apt:
-    pkg: "apt-transport-https"
-    state: latest
-    update_cache: true
-    cache_valid_time: "{{ aptcachetime }}"
+#- name: Install apt-transport-https
+#  become: true
+#  apt:
+#    pkg: "apt-transport-https"
+#    state: latest
+#    update_cache: true
+#    cache_valid_time: "{{ aptcachetime }}"
 
 - name: Add Apt signing key
   become: true
@@ -26,4 +26,4 @@
     pkg: "code"
     state: latest
     update_cache: true
-    cache_valid_time: "{{ aptcachetime }}"
+#    cache_valid_time: "{{ aptcachetime }}"

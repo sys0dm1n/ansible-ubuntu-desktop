@@ -1,8 +1,8 @@
 ---
 
-common_enabled:  yes
-locales_enabled: yes
-desktop_enabled: yes
+common_enabled:  no
+locales_enabled: no
+desktop_enabled: no
 
 angryipscanner_enabled:       no
 atom_enabled:                 no
@@ -84,8 +84,8 @@ zsh_enabled:                  no
 
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 aptcachetime: 3600
-locale: "en_US.UTF-8"
-timezone: "Asia/Beirut"
+locale: "en_GB.UTF-8"
+timezone: "Europe/London"
 chromium:
   set_default: false
   policy: false
